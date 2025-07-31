@@ -1,0 +1,244 @@
+Name : Het lathiya 
+
+python software developer
+
+mo : +91 8758803220 
+gmail : hetglathiya875@gmail.com
+
+=======================================================================================================================================================================
+
+head line like : Passionate about building efficient backend solutions with expertise in Python, FastAPI, webb scraping and Financial Systems. I solve complex problems with multiple innovative approaches.
+=======================================================================================================================================================================
+about me : 
+Passionate Python developer with expertise in financial systems and innovative problem-solving
+
+Detail-oriented and motivated Python Developer with a strong interest in backend development and
+data-driven systems. I specialize in building efficient APIs, automating tasks through web scraping,
+and developing robust data pipelines using Python frameworks like Django and FastAPI. With solid
+problem-solving skills in algorithms and database design, I aim to contribute to high-impact projects
+that require clean architecture, maintainable code, and scalable backend solutions. I’m particularly
+interested in roles involving real-time data processing, web scraping automation, and RESTful API
+design in fast-moving tech environments.
+
+My journey began with comprehensive backend python training, where I mastered Python, Django, and MySQL. During this phase, I developed key projects including an rental cloth platform django app.
+
+I then transitioned into professional development, specializing in web backend & financial systems. Over the past year, I've worked extensively with FastAPI, web scraping, and real-time data processing technologies, gaining deep expertise in financial protocols and trading systems.
+
+What sets me apart is my approach to problem-solving: I always explore multiple solution paths for every challenge, ensuring the most efficient and innovative implementation.
+
+=======================================================================================================================================================================
+Core Competencies : 
+Python Development
+Web scraping
+Real-time Processing
+Financial Systems
+Problem Solving
+Desktop Applications
+=======================================================================================================================================================================
+
+Skills :
+Technical Skills 
+Languages : Python, C, C++, SQL, 
+Backend Frameworks : Django, DRF, FastAPI, Socket.io ,Streamlit 
+Desktop Development : PyQt5, PySide2, Qt Designe
+Data & Analysis : Pandas, Numpy, ocr, Open CV, Matplotlib
+Scraping Libraries: Requests, BeautifulSoup, Crawling, Selenium, Scrapy, html5lib
+Databases: MySQL, PostgreSQL, SQLite, SQL Server, Mongodb
+Tools: Git, GitHub, Jira, Postman, VS Code, PyCharm, SSMS, Cursor, XD
+Concepts: ORM, Microservices, API Integration, Real-time Processing, REST APIs, web scraping, scripting
+
+
+Soft Skills
+• Team Leadership
+• Critical Thinking
+• Agile Communication
+• Technical Documentation
+• Efficient Debugging
+• Teamwork, 
+• Communication, 
+• Problem Solving
+
+=======================================================================================================================================================================
+Work Experience :
+1. Python Software Developer
+ ANV Tech | Mar 2025 – Present · Surat, Gujarat (On-site)
+ Industry: FinTech
+- Architected FinTech APIs using FastAPI and Django, optimized for speed and modularity.
+- Scraped IPO data from NSE/BSE using requests, BeautifulSoup, brotli, and gzip decompression.
+- Developed portfolio analytics and fraud detection using microservices architecture.
+- Integrated real-time webhook systems for payment updates and stock alerts.
+
+2. Python Software Developer
+Daos Infotech | July 2024 – March 2025 · Remote 9 month
+Industry: Service Management
+- Led the Water Purifier Filter Tracking project with barcode and map-based routing.
+- Scraped purifier usage data to automate service scheduling by location zone.
+- Built WhatsApp API integration for service alerts and feedback collection.
+- Used Django, PostgreSQL, Kafka, and Docker for end-to-end development.
+
+3. Python Software Developer
+Sixty13 Web Solutions | Feb 2024 – june 2024 · Remote (6 month)
+Industry: Hospitality & Web Solutions
+- Built a hotel management suite including booking, check-in, and staff modules.
+- Scraped pricing data from travel sites and competitors using concurrent requests.
+- Implemented secure auth using JWT and RBAC.
+Python Software Developer - intern
+Sixty13 Web Solutions | Aug 2023 – Jan 2024 · Onsite - Surat, Gujarat (6 month)
+- Developed REST APIs for e-commerce and booking systems.
+- Managed database logic for hybrid SQL backends: PostgreSQL + SQL Server + SQLite.
+- Worked with teams for frontend-backend integration and endpoint optimization.
+
+4. Python Developer - trainee 
+SkillQode Institute | Aug 2023  – Jan 2024 · Surat, Gujarat ( 6 month )
+- Developed a rental platform backend in Django with SQLite and admin dashboard.
+- Created scraping tools for catalog data enrichment and price comparison.
+- Practiced Git workflows, code reviews, and Agile task planning using Jira.
+
+=======================================================================================================================================================================
+education :
+EducationEducation
+Veer Narmad South Gujarat University, Surat
+Bachelor's degreeBachelor's degree
+Mar 2020 - Apr 2023
+
+=======================================================================================================================================================================
+Projects :
+
+---
+
+### 🔧 **Projects**
+
+---
+
+#### 1. **Water Purifier Service Management System**
+
+**Tech Stack:** Django, React, MySQL, REST APIs, QR Code
+**Description:** A full-fledged system for managing water purifier services across multiple organizations. It supports tracking of service records, customer feedback, and QR-based service verification.
+**Key Features:**
+
+* Service request tracking and assignment
+* QR code scanning for validation
+* Organization registration & approval system
+* Customer feedback and rating mechanism
+* Admin and user management dashboards
+  **Role:**
+* Designed and implemented backend logic using Django
+* Developed RESTful APIs for frontend-backend communication
+* Implemented QR code-based tracking and service flow
+
+---
+
+#### 2. **Rental Clothes Booking Platform** *(Internship Project)*
+
+**Tech Stack:** Django, SQLite
+**Description:** A platform for managing rental dress bookings, primarily targeted at occasion wear.
+**Key Features:**
+
+* Admin dashboard for inventory control
+* Dress listing with booking system
+* User registration and authentication
+  **Role:**
+* Built models and CRUD operations
+* Created user forms and login system
+* Developed admin controls for dress inventory
+
+---
+
+#### 3. **Streamlit Data Dashboard**
+
+**Tech Stack:** Streamlit, Pandas, Plotly
+**Description:** An interactive dashboard for analyzing and visualizing real-time data with filtering and charting capabilities.
+**Key Features:**
+
+* Real-time dynamic data charts
+* Filters for granular data analysis
+* Exportable graph modules
+  **Role:**
+* Developed chart rendering logic
+* Integrated data processing using Pandas
+* Designed UI elements with Streamlit components
+
+---
+
+#### 4. **Hotel Management System**
+
+**Tech Stack:** Django, React, MySQL, REST APIs
+**Description:** An end-to-end hotel management platform covering everything from booking and customer service to HR and reporting.
+**Key Features:**
+
+* Room booking and cancellation system
+* Services & amenities management
+* Customer feedback with email notifications
+* HRMS (employee onboarding, attendance, and leaves)
+* Admin portal with authentication and reporting tools
+  **Role:**
+* Built backend APIs for all core modules
+* Integrated frontend with REST APIs using React
+* Developed user and admin authentication systems
+
+---
+
+#### 5. **IPO Data Scraper & Analysis System**
+
+**Tech Stack:** Python, SQLite, SQL Server, Requests, BeautifulSoup
+**Description:** A production-grade system to scrape, manage, and analyze IPO data from 2019–2025.
+**Key Features:**
+
+* Extracts IPO summary and detailed data from investorgain.com
+* Upserts data into SQLite and SQL Server
+* Deduplication using constraints and validations
+* Real-time logging, error handling, retry mechanism
+* Clean data pipeline and backup strategies
+  **Role:**
+* Developed robust scraping pipelines
+* Designed database schema for clean data flow
+* Implemented error handling, deduplication & logging
+  **Status:**
+* ✅ Fully operational and scalable (1,036+ IPOs processed)
+* ✅ Production-ready with monitoring and retry mechanisms
+
+---
+
+#### 6. **NSE Data Scraper & API System**
+
+**Tech Stack:** FastAPI, MongoDB, Scrapy, Selenium, BeautifulSoup, Requests, Docker
+**Description:** A scalable web scraping and data serving system for real-time and historical stock market data from NSE India.
+**Key Features:**
+
+* Scrapes top gainers, losers, new listings, and indices
+* Async FastAPI-based RESTful backend
+* MongoDB for real-time data storage
+* Swagger/OpenAPI documentation
+* Cron jobs for automated scraping
+* Token-based authentication system
+  **Role:**
+* Built scraping pipelines using Scrapy, Selenium & Requests
+* Created FastAPI-based API services with MongoDB integration
+* Setup Docker environment for deployment and cron scheduling
+
+---
+
+
+
+=======================================================================================================================================================================
+
+Certifications : 
+
+• Problem Solving (Basic) – HackerRank – Mar 2024
+• Python (Basic) – HackerRank – Apr 2024
+• Git & GitHub Bootcamp – LetsUpgrade – Apr 2024
+• Postman API Fundamentals – LetsUpgrade – Apr 2024
+• Scaler (Python Course for Beginners) – Scaler – Apr 2024
+• SQL (Basic) – HackerRank – Oct 2024
+
+=======================================================================================================================================================================
+Quick Links :
+
+linkedin : https://www.linkedin.com/in/het-lathiya-83a310281/
+leetcode : https://leetcode.com/u/hetlathiya875/
+hackerrank : https://www.hackerrank.com/profile/hetglathiya875
+git hub : https://github.com/het875
+
+
+
+

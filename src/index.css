@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+/* Python-inspired cinematic portfolio theme */
+@theme {
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif; 
+  --font-mono: "JetBrains Mono", monospace;
+  
+  /* Python-inspired color palette */
+  --color-python-blue: #306998;
+  --color-python-yellow: #ffd43b;
+  --color-python-green: #4b8b3b;
+  --color-python-electric: #1e90ff;
+  --color-python-neon: #39ff14;
+  
+  /* Dark theme colors (primary) */
+  --color-dark-bg: #000000;
+  --color-dark-surface: #0a0a0a;
+  --color-dark-surface-variant: #1a1a1a;
+  --color-dark-border: #2a2a2a;
+  --color-dark-text-primary: #ffffff;
+  --color-dark-text-secondary: #b3b3b3;
+  --color-dark-text-accent: #ffd43b;
+  
+  /* Light theme colors (secondary) */
+  --color-light-bg: #fafafa;
+  --color-light-surface: #ffffff;
+  --color-light-surface-variant: #f5f5f5;
+  --color-light-border: #e5e5e5;
+  --color-light-text-primary: #1a1a1a;
+  --color-light-text-secondary: #666666;
+  --color-light-text-accent: #306998;
+  
+  /* Semantic colors */
+  --color-success: #39ff14;
+  --color-warning: #ffd43b;
+  --color-error: #ff4444;
+  --color-info: #1e90ff;
+  
+  /* Extended spacing */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-104: 26rem;
+  --spacing-112: 28rem;
+  --spacing-128: 32rem;
+  
+  /* Custom breakpoints */
+  --breakpoint-xs: 475px;
+  --breakpoint-3xl: 1920px;
+  
+  /* Animation timing */
+  --animate-duration-fast: 0.2s;
+  --animate-duration-base: 0.3s;
+  --animate-duration-slow: 0.5s;
+  --animate-duration-slower: 0.8s;
+  --animate-duration-cinematic: 1.2s;
+  
+  /* Custom easing */
+  --animate-ease-dramatic: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --animate-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animate-ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --animate-ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  
+  /* Custom shadows with Python colors */
+  --shadow-glow: 0 0 20px rgb(255 212 59 / 0.3);
+  --shadow-glow-lg: 0 0 40px rgb(255 212 59 / 0.4);
+  --shadow-glow-xl: 0 0 60px rgb(57 255 20 / 0.4);
+  --shadow-python-blue: 0 0 30px rgb(48 105 152 / 0.5);
+  --shadow-python-green: 0 0 30px rgb(75 139 59 / 0.5);
+  --shadow-electric: 0 0 30px rgb(30 144 255 / 0.5);
+}
+
+/* Global styles with theme variables */
+:root {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Default dark theme */
+  color-scheme: dark light;
+  color: var(--color-dark-text-primary);
+  background-color: var(--color-dark-bg);
+}
+
+/* Light mode overrides */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--color-light-text-primary);
+    background-color: var(--color-light-bg);
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Enhanced body styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-dark-bg) 0%, var(--color-dark-surface) 50%, var(--color-dark-surface-variant) 100%);
+  overflow-x: hidden;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-dark-text-primary);
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-python-yellow);
+  color: var(--color-dark-bg);
+}
+
+::-moz-selection {
+  background-color: var(--color-python-yellow);
+  color: var(--color-dark-bg);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-python-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-python-electric);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-python-yellow);
+  outline-offset: 2px;
+}
+
+/* Button base styles */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--color-python-blue), var(--color-python-electric));
+  color: var(--color-dark-text-primary);
+  cursor: pointer;
+  transition: all var(--animate-duration-base) var(--animate-ease-dramatic);
+  box-shadow: var(--shadow-python-blue);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-lg);
+  background: linear-gradient(135deg, var(--color-python-electric), var(--color-python-neon));
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Link styles */
+a {
+  font-weight: 500;
+  color: var(--color-python-electric);
+  text-decoration: none;
+  transition: all var(--animate-duration-base) var(--animate-ease-dramatic);
+  position: relative;
+}
+
+a:hover {
+  color: var(--color-python-neon);
+  text-shadow: 0 0 8px currentColor;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-python-electric), var(--color-python-neon));
+  transition: width var(--animate-duration-base) var(--animate-ease-dramatic);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Utility classes for theme switching */
+.theme-dark {
+  color-scheme: dark;
+  --current-bg: var(--color-dark-bg);
+  --current-surface: var(--color-dark-surface);
+  --current-surface-variant: var(--color-dark-surface-variant);
+  --current-border: var(--color-dark-border);
+  --current-text-primary: var(--color-dark-text-primary);
+  --current-text-secondary: var(--color-dark-text-secondary);
+  --current-text-accent: var(--color-dark-text-accent);
+}
+
+.theme-light {
+  color-scheme: light;
+  --current-bg: var(--color-light-bg);
+  --current-surface: var(--color-light-surface);
+  --current-surface-variant: var(--color-light-surface-variant);
+  --current-border: var(--color-light-border);
+  --current-text-primary: var(--color-light-text-primary);
+  --current-text-secondary: var(--color-light-text-secondary);
+  --current-text-accent: var(--color-light-text-accent);
+}
+
+/* Cinematic keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: var(--shadow-glow);
+  }
+  50% {
+    box-shadow: var(--shadow-glow-xl);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in-up {
+  animation: fadeInUp var(--animate-duration-slow) var(--animate-ease-dramatic);
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--animate-duration-base) var(--animate-ease-bounce);
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
