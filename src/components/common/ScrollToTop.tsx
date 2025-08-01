@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
+import { scrollToTop } from '../../lib/locomotive-scroll'
 
 const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -14,11 +15,8 @@ const ScrollToTop: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+  const handleScrollToTop = () => {
+    scrollToTop()
   }
 
   return (
@@ -26,7 +24,7 @@ const ScrollToTop: React.FC = () => {
       {isVisible && (
         <motion.button
           className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 p-3 sm:p-3 min-w-[48px] min-h-[48px] bg-gradient-to-r from-python-blue to-python-electric text-white rounded-full shadow-lg hover:shadow-python-blue/50 transition-all duration-300 flex items-center justify-center"
-          onClick={scrollToTop}
+          onClick={handleScrollToTop}
           initial={{ opacity: 0, scale: 0, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0, y: 100 }}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { scrollToTop as locomotiveScrollToTop } from '../lib/locomotive-scroll'
 
 export const useActiveSection = (sectionIds: string[]) => {
   const [activeSection, setActiveSection] = useState(sectionIds[0])
@@ -55,10 +56,8 @@ export const useScrollDirection = () => {
 
 export const useScrollToTop = () => {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    // Use Locomotive Scroll if available, fallback to native
+    locomotiveScrollToTop()
   }
 
   return scrollToTop

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Home, User, Briefcase, Code, Mail } from 'lucide-react'
+import { handleSmoothScroll } from '../../lib/locomotive-scroll'
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,14 +43,7 @@ const Navigation: React.FC = () => {
   }, [])
 
   const scrollToSection = (href: string) => {
-    if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
+    handleSmoothScroll(href)
     setIsOpen(false)
   }
 
