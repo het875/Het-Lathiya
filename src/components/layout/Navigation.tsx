@@ -66,12 +66,12 @@ const Navigation: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-full sm:max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <motion.a
               href="#"
-              className="text-xl font-display font-bold bg-gradient-to-r from-python-electric to-python-yellow bg-clip-text text-transparent"
+              className="text-lg sm:text-xl font-display font-bold bg-gradient-to-r from-python-electric to-python-yellow bg-clip-text text-transparent"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection('#')
@@ -83,12 +83,12 @@ const Navigation: React.FC = () => {
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.id}
                   href={item.href}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${
+                  className={`relative px-2 lg:px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-300 ${
                     activeSection === item.id
                       ? 'text-python-electric'
                       : 'text-dark-text-secondary hover:text-white'
@@ -118,7 +118,7 @@ const Navigation: React.FC = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="md:hidden p-2 text-dark-text-secondary hover:text-python-electric transition-colors"
+              className="md:hidden p-2 text-dark-text-secondary hover:text-python-electric transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -149,18 +149,18 @@ const Navigation: React.FC = () => {
 
             {/* Menu Content */}
             <motion.div
-              className="absolute top-20 left-6 right-6 bg-dark-surface/95 backdrop-blur-md rounded-2xl border border-dark-border p-6"
+              className="absolute top-16 sm:top-20 left-4 right-4 sm:left-6 sm:right-6 bg-dark-surface/95 backdrop-blur-md rounded-2xl border border-dark-border p-4 sm:p-6"
               initial={{ opacity: 0, y: -20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.9 }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <div className="space-y-4">
+              <div className="space-y-2 sm:space-y-4">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.id}
                     href={item.href}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-300 ${
+                    className={`flex items-center gap-3 px-3 sm:px-4 py-3 sm:py-3 rounded-lg transition-colors duration-300 min-h-[48px] ${
                       activeSection === item.id
                         ? 'bg-python-electric/20 text-python-electric border border-python-electric/30'
                         : 'text-dark-text-secondary hover:text-white hover:bg-dark-bg/50'
@@ -176,7 +176,7 @@ const Navigation: React.FC = () => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <item.icon size={20} />
-                    <span className="font-medium">{item.label}</span>
+                    <span className="font-medium text-sm sm:text-base">{item.label}</span>
                   </motion.a>
                 ))}
               </div>

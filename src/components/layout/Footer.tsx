@@ -15,20 +15,21 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-dark-bg border-t border-dark-border">
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-full sm:max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <motion.div
+            className="sm:col-span-2 md:col-span-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-display font-bold bg-gradient-to-r from-python-electric to-python-yellow bg-clip-text text-transparent mb-4">
+            <h3 className="text-xl sm:text-2xl font-display font-bold bg-gradient-to-r from-python-electric to-python-yellow bg-clip-text text-transparent mb-3 sm:mb-4">
               Het Lathiya
             </h3>
-            <p className="text-dark-text-secondary leading-relaxed">
+            <p className="text-dark-text-secondary leading-relaxed text-sm sm:text-base">
               {personalInfo.aboutMe.split('.')[0]}. Specializing in Python, FastAPI, and financial systems development.
             </p>
           </motion.div>
@@ -40,8 +41,8 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Quick Links</h4>
+            <ul className="space-y-1.5 sm:space-y-2">
               {[
                 { label: 'About', href: '#about' },
                 { label: 'Projects', href: '#projects' },
@@ -51,7 +52,7 @@ const Footer: React.FC = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-dark-text-secondary hover:text-python-electric transition-colors duration-300 inline-block hover:translate-x-1 transform"
+                    className="text-dark-text-secondary hover:text-python-electric transition-colors duration-300 inline-block hover:translate-x-1 transform text-sm sm:text-base"
                   >
                     {link.label}
                   </a>
@@ -67,12 +68,12 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Get In Touch</h4>
-            <div className="space-y-2 text-dark-text-secondary">
+            <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Get In Touch</h4>
+            <div className="space-y-1.5 sm:space-y-2 text-dark-text-secondary text-sm sm:text-base">
               <p>{location}</p>
               <a
                 href={`mailto:${email}`}
-                className="hover:text-python-yellow transition-colors duration-300 block"
+                className="hover:text-python-yellow transition-colors duration-300 block break-all sm:break-normal"
               >
                 {email}
               </a>
@@ -92,77 +93,77 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
-            <div className="flex flex-col space-y-3">
+            <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Follow Me</h4>
+            <div className="flex flex-col space-y-2 sm:space-y-3">
               <a
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-dark-text-secondary hover:text-python-electric transition-colors duration-300 group"
+                className="flex items-center gap-2 sm:gap-3 text-dark-text-secondary hover:text-python-electric transition-colors duration-300 group min-h-[44px] p-1"
               >
-                <Github className="w-5 h-5" />
-                <span className="group-hover:translate-x-1 transform transition-transform duration-300">GitHub</span>
+                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="group-hover:translate-x-1 transform transition-transform duration-300 text-sm sm:text-base">GitHub</span>
               </a>
               <a
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-dark-text-secondary hover:text-python-blue transition-colors duration-300 group"
+                className="flex items-center gap-2 sm:gap-3 text-dark-text-secondary hover:text-python-blue transition-colors duration-300 group min-h-[44px] p-1"
               >
-                <Linkedin className="w-5 h-5" />
-                <span className="group-hover:translate-x-1 transform transition-transform duration-300">LinkedIn</span>
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="group-hover:translate-x-1 transform transition-transform duration-300 text-sm sm:text-base">LinkedIn</span>
               </a>
               <a
                 href={socialLinks.leetcode}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-dark-text-secondary hover:text-python-yellow transition-colors duration-300 group"
+                className="flex items-center gap-2 sm:gap-3 text-dark-text-secondary hover:text-python-yellow transition-colors duration-300 group min-h-[44px] p-1"
               >
-                <ExternalLink className="w-5 h-5" />
-                <span className="group-hover:translate-x-1 transform transition-transform duration-300">LeetCode</span>
+                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="group-hover:translate-x-1 transform transition-transform duration-300 text-sm sm:text-base">LeetCode</span>
               </a>
               <a
                 href={socialLinks.hackerrank}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-dark-text-secondary hover:text-python-neon transition-colors duration-300 group"
+                className="flex items-center gap-2 sm:gap-3 text-dark-text-secondary hover:text-python-neon transition-colors duration-300 group min-h-[44px] p-1"
               >
-                <FontAwesomeIcon icon={faHackerrank} className="w-5 h-5" />
-                <span className="group-hover:translate-x-1 transform transition-transform duration-300">HackerRank</span>
+                <FontAwesomeIcon icon={faHackerrank} className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="group-hover:translate-x-1 transform transition-transform duration-300 text-sm sm:text-base">HackerRank</span>
               </a>
             </div>
           </motion.div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-dark-border mb-8"></div>
+        <div className="border-t border-dark-border mb-6 sm:mb-8"></div>
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
           {/* Copyright */}
           <motion.div
-            className="text-dark-text-secondary text-sm flex items-center gap-2"
+            className="text-dark-text-secondary text-xs sm:text-sm flex flex-wrap items-center justify-center sm:justify-start gap-1 sm:gap-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <span>© {currentYear} Het Lathiya. Made with</span>
-            <Heart className="w-4 h-4 text-red-500 animate-pulse" />
+            <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 animate-pulse" />
             <span>and</span>
-            <Coffee className="w-4 h-4 text-yellow-600" />
+            <Coffee className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-600" />
             <span>in {location}</span>
           </motion.div>
 
           {/* Tech Stack */}
           <motion.div
-            className="flex items-center gap-2 text-dark-text-secondary text-sm"
+            className="flex flex-wrap items-center justify-center sm:justify-end gap-1 sm:gap-2 text-dark-text-secondary text-xs sm:text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Code className="w-4 h-4" />
+            <Code className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Built with</span>
             <span className="text-python-electric">React</span>
             <span>+</span>

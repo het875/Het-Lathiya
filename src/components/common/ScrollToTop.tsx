@@ -25,7 +25,7 @@ const ScrollToTop: React.FC = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-r from-python-blue to-python-electric text-white rounded-full shadow-lg hover:shadow-python-blue/50 transition-all duration-300"
+          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 p-3 sm:p-3 min-w-[48px] min-h-[48px] bg-gradient-to-r from-python-blue to-python-electric text-white rounded-full shadow-lg hover:shadow-python-blue/50 transition-all duration-300 flex items-center justify-center"
           onClick={scrollToTop}
           initial={{ opacity: 0, scale: 0, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -34,7 +34,7 @@ const ScrollToTop: React.FC = () => {
           whileTap={{ scale: 0.9 }}
           transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <ArrowUp size={20} />
+          <ArrowUp size={20} className="sm:w-5 sm:h-5" />
         </motion.button>
       )}
     </AnimatePresence>

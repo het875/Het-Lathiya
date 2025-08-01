@@ -10,15 +10,14 @@ const Hero: React.FC = () => {
   const socialLinks = portfolioHelpers.getSocialLinks()
   
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-dark-surface to-dark-surface-variant">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black via-dark-surface to-dark-surface-variant">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(48,105,152,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(48,105,152,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-float" />
-        
         {/* Floating orbs */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-64 h-64 bg-python-electric/20 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-40 h-40 sm:w-64 sm:h-64 bg-python-electric/20 rounded-full blur-3xl"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -31,7 +30,7 @@ const Hero: React.FC = () => {
           }}
         />
         <motion.div
-          className="absolute top-3/4 right-1/3 w-48 h-48 bg-python-neon/15 rounded-full blur-3xl"
+          className="absolute top-3/4 right-1/3 w-32 h-32 sm:w-48 sm:h-48 bg-python-neon/15 rounded-full blur-3xl"
           animate={{
             x: [0, -80, 0],
             y: [0, 30, 0],
@@ -47,10 +46,10 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-full sm:max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto">
         {/* Name */}
         <motion.h1
-          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-6"
+          className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
@@ -62,7 +61,7 @@ const Hero: React.FC = () => {
 
         {/* Title */}
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl text-dark-text-secondary mb-8 font-medium"
+          className="text-base sm:text-xl md:text-2xl lg:text-3xl text-dark-text-secondary mb-6 sm:mb-8 font-medium"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
@@ -72,7 +71,7 @@ const Hero: React.FC = () => {
 
         {/* Description */}
         <motion.p
-          className="text-lg md:text-xl text-dark-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="text-sm sm:text-lg md:text-xl text-dark-text-secondary max-w-full sm:max-w-2xl md:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}

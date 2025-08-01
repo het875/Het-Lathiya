@@ -16,17 +16,17 @@ const Projects: React.FC = () => {
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <motion.div
-          className="mb-16 text-center"
+          className="mb-10 sm:mb-16 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
+          <h2 className="font-display mb-4 sm:mb-6 text-2xl sm:text-4xl font-bold md:text-5xl lg:text-6xl">
             <span className="text-python-neon">Featured</span>{' '}
             <span className="text-python-yellow">Projects</span>
           </h2>
-          <p className="text-dark-text-secondary mx-auto max-w-3xl text-xl">
+          <p className="text-dark-text-secondary mx-auto max-w-full sm:max-w-2xl md:max-w-3xl text-base sm:text-xl">
             A showcase of my recent work, demonstrating technical expertise and creative
             problem-solving across various domains and technologies.
           </p>
@@ -44,11 +44,11 @@ const Projects: React.FC = () => {
             Featured Work
           </motion.h3>
 
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-8">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="group bg-dark-surface border-dark-border hover:border-python-electric/50 relative overflow-hidden rounded-2xl border transition-all duration-500"
+                className="group bg-dark-surface border-dark-border hover:border-python-electric/50 relative overflow-hidden rounded-2xl border transition-all duration-500 p-4 sm:p-6"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -56,9 +56,9 @@ const Projects: React.FC = () => {
                 whileHover={{ y: -8 }}
               >
                 {/* Project Image */}
-                <div className="from-python-blue/20 to-python-electric/20 relative h-64 overflow-hidden bg-gradient-to-br">
+                <div className="from-python-blue/20 to-python-electric/20 relative h-40 sm:h-64 overflow-hidden bg-gradient-to-br">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-4xl font-bold text-white/20">
+                    <div className="text-xl sm:text-4xl font-bold text-white/20">
                       {project.title
                         .split(' ')
                         .map(word => word[0])
@@ -66,9 +66,9 @@ const Projects: React.FC = () => {
                     </div>
                   </div>
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-2 sm:top-4 right-2 sm:right-4">
                     <span
-                      className={`rounded-full px-3 py-1 text-xs font-medium ${
+                      className={`rounded-full px-2 sm:px-3 py-1 text-xs font-medium ${
                         project.status === 'production'
                           ? 'border border-green-500/30 bg-green-500/20 text-green-400'
                           : project.status === 'completed'
@@ -79,58 +79,28 @@ const Projects: React.FC = () => {
                       {project.status}
                     </span>
                   </div>
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    {project.githubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-python-blue hover:bg-python-electric rounded-full p-3 text-white transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Github size={20} />
-                      </motion.a>
-                    )}
-                    {project.liveUrl && (
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-python-yellow hover:bg-python-neon rounded-full p-3 text-black transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ExternalLink size={20} />
-                      </motion.a>
-                    )}
-                  </div>
                 </div>
-
                 {/* Project Content */}
-                <div className="p-6">
-                  <h4 className="font-display group-hover:text-python-yellow mb-3 text-xl font-semibold text-white transition-colors">
+                <div className="p-4 sm:p-6">
+                  <h4 className="font-display group-hover:text-python-yellow mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-white transition-colors">
                     {project.title}
                   </h4>
-                  <p className="text-dark-text-secondary mb-4 leading-relaxed">
+                  <p className="text-dark-text-secondary mb-2 sm:mb-4 leading-relaxed text-sm sm:text-base">
                     {project.description}
                   </p>
-
                   {/* Technologies */}
-                  <div className="mb-4 flex flex-wrap gap-2">
+                  <div className="mb-2 sm:mb-4 flex flex-wrap gap-2">
                     {project.techStack.map(tech => (
                       <span
                         key={tech}
-                        className="bg-python-blue/20 text-python-electric border-python-blue/30 rounded-full border px-3 py-1 text-xs font-medium"
+                        className="bg-python-blue/20 text-python-electric border-python-blue/30 rounded-full border px-2 sm:px-3 py-1 text-xs font-medium"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-
                   {/* Links */}
-                  <div className="flex gap-4">
+                  <div className="flex gap-2 sm:gap-4">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
@@ -139,7 +109,7 @@ const Projects: React.FC = () => {
                         className="text-dark-text-secondary hover:text-python-electric flex items-center gap-2 transition-colors"
                       >
                         <Github size={16} />
-                        Code
+                        <span className="hidden sm:inline">Code</span>
                       </a>
                     )}
                     {project.liveUrl && (
@@ -150,7 +120,7 @@ const Projects: React.FC = () => {
                         className="text-dark-text-secondary hover:text-python-yellow flex items-center gap-2 transition-colors"
                       >
                         <ExternalLink size={16} />
-                        Live Demo
+                        <span className="hidden sm:inline">Live Demo</span>
                       </a>
                     )}
                   </div>

@@ -10,27 +10,27 @@ const About: React.FC = () => {
   const totalYears = portfolioHelpers.getTotalExperienceYears()
   
   return (
-    <section id="about" className="py-20 px-6 bg-gradient-to-br from-dark-surface to-dark-surface-variant">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-dark-surface to-dark-surface-variant">
+      <div className="max-w-full sm:max-w-3xl md:max-w-5xl lg:max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6">
             <span className="text-python-electric">About</span>{' '}
             <span className="text-python-yellow">Me</span>
           </h2>
-          <p className="text-xl text-dark-text-secondary max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-dark-text-secondary max-w-full sm:max-w-2xl md:max-w-3xl mx-auto">
             {aboutMe.split('\n\n')[0]}
           </p>
         </motion.div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-16 items-center mb-12 sm:mb-20">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -38,38 +38,38 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl md:text-3xl font-display font-semibold mb-6 text-python-yellow">
+            <h3 className="text-lg sm:text-2xl md:text-3xl font-display font-semibold mb-4 sm:mb-6 text-python-yellow">
               Crafting Digital Excellence
             </h3>
-            <div className="space-y-4 text-lg text-dark-text-secondary">
+            <div className="space-y-2 sm:space-y-4 text-base sm:text-lg text-dark-text-secondary">
               {aboutMe.split('\n\n').slice(1, 4).map((paragraph, index) => (
                 <p key={index}>
                   {paragraph}
                 </p>
               ))}
             </div>
-            
+
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-8 p-6 bg-dark-bg/30 rounded-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8 p-4 sm:p-6 bg-dark-bg/30 rounded-xl">
               <div className="text-center">
-                <div className="text-2xl font-bold text-python-electric">{totalYears}+</div>
-                <div className="text-sm text-dark-text-secondary">Years Experience</div>
+                <div className="text-xl sm:text-2xl font-bold text-python-electric">{totalYears}+</div>
+                <div className="text-xs sm:text-sm text-dark-text-secondary">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-python-yellow">{stats.totalProjects}+</div>
-                <div className="text-sm text-dark-text-secondary">Projects</div>
+                <div className="text-xl sm:text-2xl font-bold text-python-yellow">{stats.totalProjects}+</div>
+                <div className="text-xs sm:text-sm text-dark-text-secondary">Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-python-neon">{stats.certifications}</div>
-                <div className="text-sm text-dark-text-secondary">Certifications</div>
+                <div className="text-xl sm:text-2xl font-bold text-python-neon">{stats.certifications}</div>
+                <div className="text-xs sm:text-sm text-dark-text-secondary">Certifications</div>
               </div>
             </div>
-            
+
             {/* Resume Download */}
             <motion.a
               href={resume}
               download
-              className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-gradient-to-r from-python-blue to-python-electric text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-python-blue/30 transition-all duration-300"
+              className="inline-flex items-center gap-2 mt-4 sm:mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-python-blue to-python-electric text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-python-blue/30 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
