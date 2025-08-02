@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, Code } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, Code, AlertCircle } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import portfolioHelpers from '../../lib/portfolio-helpers'
+import { sendEmail, validateEmailJSConfig } from '../../utils/email'
 
 interface FormData {
   name: string
   email: string
+  company: string
   subject: string
   message: string
 }
@@ -19,34 +21,63 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    company: '',
     subject: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    
+    // Map form field names to state property names for EmailJS compatibility
+    const fieldMapping: { [key: string]: keyof FormData } = {
+      from_name: "name",
+      reply_to: "email",
+      company: "company",
+      subject: "subject",
+      message: "message",
+    }
+    
+    const stateField = fieldMapping[name] || name as keyof FormData
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [stateField]: value
     })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!formRef.current) return
+    
     setIsSubmitting(true)
+    setError(null)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Check if EmailJS is configured
+    if (!validateEmailJSConfig()) {
+      setError('Email service is not properly configured. Please try again later.')
+      setIsSubmitting(false)
+      return
+    }
     
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reset form after success
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 3000)
+    try {
+      await sendEmail(formRef.current)
+      setIsSubmitted(true)
+      
+      // Reset form after success
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({ name: '', email: '', company: '', subject: '', message: '' })
+      }, 3000)
+    } catch (error) {
+      setError('Failed to send message. Please try again.')
+      console.error('Contact form error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -221,16 +252,28 @@ const Contact: React.FC = () => {
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  {error && (
+                    <motion.div
+                      className="p-3 sm:p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center gap-2 sm:gap-3"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0" />
+                      <p className="text-red-400 text-xs sm:text-sm">{error}</p>
+                    </motion.div>
+                  )}
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-white mb-2">
+                      <label htmlFor="from_name" className="block text-xs sm:text-sm font-medium text-white mb-2">
                         Name *
                       </label>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
+                        id="from_name"
+                        name="from_name"
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -239,13 +282,13 @@ const Contact: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-white mb-2">
+                      <label htmlFor="reply_to" className="block text-xs sm:text-sm font-medium text-white mb-2">
                         Email *
                       </label>
                       <input
                         type="email"
-                        id="email"
-                        name="email"
+                        id="reply_to"
+                        name="reply_to"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -255,20 +298,36 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-white mb-2">
-                      Subject *
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-dark-text-secondary focus:border-python-electric focus:ring-1 focus:ring-python-electric outline-none transition-colors text-sm sm:text-base"
-                      placeholder="What's this about?"
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    <div>
+                      <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-white mb-2">
+                        Company
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-dark-text-secondary focus:border-python-electric focus:ring-1 focus:ring-python-electric outline-none transition-colors text-sm sm:text-base"
+                        placeholder="Your company (optional)"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-white mb-2">
+                        Subject *
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-dark-text-secondary focus:border-python-electric focus:ring-1 focus:ring-python-electric outline-none transition-colors text-sm sm:text-base"
+                        placeholder="What's this about?"
+                      />
+                    </div>
                   </div>
 
                   <div>

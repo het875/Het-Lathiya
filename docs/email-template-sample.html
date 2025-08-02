@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message from {{from_name}}</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #306998 0%, #1e90ff 100%);
+            min-height: 100vh;
+        }
+        
+        .email-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #306998 0%, #1e90ff 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .contact-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #306998;
+        }
+        
+        .contact-item strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .contact-item span {
+            color: #475569;
+        }
+        
+        .message-section {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .message-section h3 {
+            margin: 0 0 15px 0;
+            color: #1e293b;
+            font-size: 20px;
+        }
+        
+        .message-section p {
+            margin: 0;
+            color: #475569;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #306998, #1e90ff);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 20px;
+                border-radius: 12px;
+            }
+            
+            .header, .content, .footer {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .message-section {
+                padding: 20px;
+            }
+            
+            .cta-button {
+                padding: 14px 28px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>🚀 New Portfolio Inquiry</h1>
+            <p>Someone is interested in working with you!</p>
+        </div>
+        
+        <div class="content">
+            <div class="contact-item">
+                <strong>From:</strong> <span>{{from_name}}</span>
+            </div>
+            
+            <div class="contact-item">
+                <strong>Email:</strong> <span>{{reply_to}}</span>
+            </div>
+            
+            <div class="contact-item">
+                <strong>Company:</strong> <span>{{company}}</span>
+            </div>
+            
+            <div class="contact-item">
+                <strong>Subject:</strong> <span>{{subject}}</span>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="message-section">
+                <h3>💬 Message:</h3>
+                <p>{{message}}</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="mailto:{{reply_to}}" class="cta-button">
+                    📧 Reply to {{from_name}}
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>This message was sent through your portfolio contact form.</p>
+            <p>Het Lathiya | Software Developer Portfolio</p>
+        </div>
+    </div>
+</body>
+</html>
