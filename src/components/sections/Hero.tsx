@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import portfolioHelpers from '../../lib/portfolio-helpers'
 import { scrollToProjects, scrollToContact, scrollToAbout } from '../../lib/locomotive-scroll'
+import BlurText from '../common/BlurText'
+import TextType from '../common/TextType'
 
 const Hero: React.FC = () => {
   const { name, title, headline } = portfolioHelpers.getPersonalInfo()
@@ -49,16 +51,13 @@ const Hero: React.FC = () => {
       {/* Main Content */}
       <div className="relative z-10 mx-auto max-w-full px-4 text-center sm:max-w-3xl sm:px-6 md:max-w-5xl lg:max-w-6xl">
         {/* Name */}
-        <motion.h1
-          className="font-display mb-4 text-4xl font-bold sm:mb-6 sm:text-6xl md:text-8xl lg:text-9xl"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <span className="from-python-electric via-python-yellow to-python-neon animate-gradient-shift bg-gradient-to-r bg-clip-text text-transparent">
-            {name}
-          </span>
-        </motion.h1>
+        <BlurText
+          text={name}
+          delay={150}
+          animateBy="words"
+          direction="top"
+          className="font-display mb-6 text-4xl font-bold sm:mb-8 sm:text-6xl md:text-8xl lg:text-9xl py-2"
+        />
 
         {/* Title */}
         <motion.p
@@ -71,14 +70,23 @@ const Hero: React.FC = () => {
         </motion.p>
 
         {/* Description */}
-        <motion.p
-          className="text-dark-text-secondary mx-auto mb-8 max-w-full text-sm leading-relaxed sm:mb-12 sm:max-w-2xl sm:text-lg md:max-w-3xl md:text-xl"
+        <motion.div
+          className="mx-auto mb-8 max-w-full sm:mb-12 sm:max-w-2xl md:max-w-3xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          {headline}
-        </motion.p>
+          <TextType
+            text={[headline]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+            className="text-dark-text-secondary text-sm leading-relaxed sm:text-lg md:text-xl"
+            loop={false}
+            startOnVisible={true}
+          />
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
