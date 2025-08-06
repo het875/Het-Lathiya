@@ -20,11 +20,11 @@ const About: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6">
+          <h2 className="font-display text-display font-normal italic leading-tight tracking-tighter mb-4 sm:mb-6">
             <span className="text-python-electric">About</span>{' '}
             <span className="text-python-yellow">Me</span>
           </h2>
-          <p className="text-base sm:text-xl text-dark-text-secondary max-w-full sm:max-w-2xl md:max-w-3xl mx-auto">
+          <p className="font-body text-lg sm:text-xl text-dark-text-secondary max-w-full sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
             {aboutMe.split('\n\n')[0]}
           </p>
         </motion.div>
@@ -38,10 +38,10 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg sm:text-2xl md:text-3xl font-display font-semibold mb-4 sm:mb-6 text-python-yellow">
+            <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-6 text-python-yellow leading-snug tracking-tight">
               Crafting Digital Excellence
             </h3>
-            <div className="space-y-2 sm:space-y-4 text-base sm:text-lg text-dark-text-secondary">
+            <div className="space-y-2 sm:space-y-4 font-body text-base sm:text-lg text-dark-text-secondary leading-relaxed">
               {aboutMe.split('\n\n').slice(1, 4).map((paragraph, index) => (
                 <p key={index}>
                   {paragraph}

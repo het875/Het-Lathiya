@@ -117,7 +117,7 @@ const BlurText: React.FC<BlurTextProps> = ({
               onAnimationComplete={
                 index === elements.length - 1 ? onAnimationComplete : undefined
               }
-              className="from-python-electric via-python-yellow to-python-neon animate-gradient-shift bg-gradient-to-r bg-clip-text text-transparent inline-block leading-32"
+              className="from-python-electric via-python-yellow to-python-neon animate-gradient-shift bg-gradient-to-r bg-clip-text text-transparent inline-block leading-34"
               style={{
                 willChange: "transform, filter, opacity",
               }}

@@ -22,11 +22,11 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
           viewport={{ once: true }}
         >
-          <h2 className="font-display mb-4 sm:mb-6 text-2xl sm:text-4xl font-bold md:text-5xl lg:text-6xl">
+          <h2 className="font-display text-display mb-4 sm:mb-6 font-normal italic leading-tight tracking-tighter">
             <span className="text-python-neon">Featured</span>{' '}
             <span className="text-python-yellow">Projects</span>
           </h2>
-          <p className="text-dark-text-secondary mx-auto max-w-full sm:max-w-2xl md:max-w-3xl text-base sm:text-xl">
+          <p className="font-body text-dark-text-secondary mx-auto max-w-full sm:max-w-2xl md:max-w-3xl text-lg sm:text-xl leading-relaxed">
             A showcase of my recent work, demonstrating technical expertise and creative
             problem-solving across various domains and technologies.
           </p>
@@ -35,7 +35,7 @@ const Projects: React.FC = () => {
         {/* Featured Projects */}
         <div className="mb-16">
           <motion.h3
-            className="font-display text-python-electric mb-8 text-2xl font-semibold"
+            className="font-heading text-python-electric mb-8 text-2xl sm:text-3xl font-semibold leading-snug tracking-tight"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -82,10 +82,10 @@ const Projects: React.FC = () => {
                 </div>
                 {/* Project Content */}
                 <div className="p-4 sm:p-6">
-                  <h4 className="font-display group-hover:text-python-yellow mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-white transition-colors">
+                  <h4 className="font-heading group-hover:text-python-yellow mb-2 sm:mb-3 text-lg sm:text-xl font-semibold text-white transition-colors leading-snug tracking-tight">
                     {project.title}
                   </h4>
-                  <p className="text-dark-text-secondary mb-2 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                  <p className="font-body text-dark-text-secondary mb-2 sm:mb-4 leading-relaxed text-sm sm:text-base">
                     {project.description}
                   </p>
                   {/* Technologies */}
@@ -93,7 +93,7 @@ const Projects: React.FC = () => {
                     {project.techStack.map(tech => (
                       <span
                         key={tech}
-                        className="bg-python-blue/20 text-python-electric border-python-blue/30 rounded-full border px-2 sm:px-3 py-1 text-xs font-medium"
+                        className="font-tech bg-python-blue/20 text-python-electric border-python-blue/30 rounded-full border px-2 sm:px-3 py-1 text-xs font-medium tracking-widest uppercase"
                       >
                         {tech}
                       </span>
@@ -106,7 +106,7 @@ const Projects: React.FC = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-dark-text-secondary hover:text-python-electric flex items-center gap-2 transition-colors"
+                        className="font-heading text-dark-text-secondary hover:text-python-electric flex items-center gap-2 transition-colors font-medium tracking-tight"
                       >
                         <Github size={16} />
                         <span className="hidden sm:inline">Code</span>
@@ -117,7 +117,7 @@ const Projects: React.FC = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-dark-text-secondary hover:text-python-yellow flex items-center gap-2 transition-colors"
+                        className="font-heading text-dark-text-secondary hover:text-python-yellow flex items-center gap-2 transition-colors font-medium tracking-tight"
                       >
                         <ExternalLink size={16} />
                         <span className="hidden sm:inline">Live Demo</span>

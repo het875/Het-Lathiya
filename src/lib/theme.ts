@@ -45,12 +45,15 @@ export const theme = {
     }
   },
   
-  // Typography scale
+  // Typography scale - Premium Awwwards style
   typography: {
     fontFamily: {
-      primary: 'Inter, system-ui, sans-serif',
-      display: 'Space Grotesk, system-ui, sans-serif',
-      mono: 'JetBrains Mono, monospace'
+      display: '"Playfair Display", "Cormorant Garamond", "Times New Roman", serif',
+      heading: '"Space Grotesk", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      sans: '"Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+      body: '"DM Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      mono: '"JetBrains Mono", "IBM Plex Mono", "SF Mono", "Monaco", monospace',
+      tech: '"Space Grotesk", "Inter", monospace'
     },
     
     fontSize: {

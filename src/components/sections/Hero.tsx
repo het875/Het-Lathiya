@@ -50,18 +50,18 @@ const Hero: React.FC = () => {
 
       {/* Main Content */}
       <div className="relative z-10 mx-auto max-w-full px-4 text-center sm:max-w-3xl sm:px-6 md:max-w-5xl lg:max-w-6xl">
-        {/* Name */}
+        {/* Name - Premium Display Typography */}
         <BlurText
           text={name}
           delay={150}
           animateBy="words"
           direction="top"
-          className="font-display mb-6 text-4xl font-bold sm:mb-8 sm:text-6xl md:text-8xl lg:text-9xl py-2"
+          className="font-display text-display mb-6 font-normal italic sm:mb-8 py-2"
         />
 
-        {/* Title */}
+        {/* Title - Clean heading font */}
         <motion.p
-          className="text-dark-text-secondary mb-6 text-base font-medium sm:mb-8 sm:text-xl md:text-2xl lg:text-3xl"
+          className="font-heading text-dark-text-secondary mb-6 text-xl font-medium leading-snug tracking-tight sm:mb-8 sm:text-2xl md:text-3xl lg:text-4xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
           {title}
         </motion.p>
 
-        {/* Description */}
+        {/* Description - Premium body font */}
         <motion.div
           className="mx-auto mb-8 max-w-full sm:mb-12 sm:max-w-2xl md:max-w-3xl"
           initial={{ opacity: 0, y: 30 }}
@@ -82,13 +82,13 @@ const Hero: React.FC = () => {
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
-            className="text-dark-text-secondary text-sm leading-relaxed sm:text-lg md:text-xl"
+            className="font-body text-dark-text-secondary text-lg leading-relaxed sm:text-xl md:text-2xl"
             loop={false}
             startOnVisible={true}
           />
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - Enhanced typography */}
         <motion.div
           className="mb-16 flex flex-col items-center justify-center gap-6 sm:flex-row"
           initial={{ opacity: 0, y: 30 }}
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <motion.button
-            className="from-python-blue to-python-electric hover:shadow-python-blue/50 rounded-lg bg-gradient-to-r px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300"
+            className="font-heading from-python-blue to-python-electric hover:shadow-python-blue/50 rounded-lg bg-gradient-to-r px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 tracking-tight"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToProjects}
@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
             View My Work
           </motion.button>
           <motion.button
-            className="border-python-yellow text-python-yellow hover:bg-python-yellow rounded-lg border-2 px-8 py-4 font-semibold transition-all duration-300 hover:text-black"
+            className="font-heading border-python-yellow text-python-yellow hover:bg-python-yellow rounded-lg border-2 px-8 py-4 font-semibold transition-all duration-300 hover:text-black tracking-tight"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToContact}

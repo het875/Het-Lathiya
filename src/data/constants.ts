@@ -104,9 +104,12 @@ export const THEME_CONFIG = {
     }
   },
   fonts: {
-    primary: "Inter, system-ui, sans-serif",
-    heading: "Inter, system-ui, sans-serif",
-    code: "JetBrains Mono, Monaco, monospace"
+    display: '"Playfair Display", "Cormorant Garamond", "Times New Roman", serif',
+    heading: '"Space Grotesk", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    primary: '"Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    body: '"DM Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    code: '"JetBrains Mono", "IBM Plex Mono", "SF Mono", "Monaco", monospace',
+    tech: '"Space Grotesk", "Inter", monospace'
   },
   breakpoints: {
     sm: "640px",
