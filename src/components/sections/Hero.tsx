@@ -4,10 +4,19 @@ import { ArrowDown, Github, Linkedin, Code } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import portfolioHelpers from '../../lib/portfolio-helpers'
+import TypingAnimation from '../common/TypingAnimation'
 
 const Hero: React.FC = () => {
-  const { name, title, headline } = portfolioHelpers.getPersonalInfo()
+  const { headline } = portfolioHelpers.getPersonalInfo()
   const socialLinks = portfolioHelpers.getSocialLinks()
+  
+  // Typing animation texts based on GitHub profile
+  const typingTexts = [
+    "Python Software Developer",
+    "Backend API Specialist", 
+    "FinTech & Web Scraping Expert",
+    "Django | FastAPI Enthusiast"
+  ]
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-dark-surface to-dark-surface-variant">
@@ -47,32 +56,50 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-        {/* Name */}
-        <motion.h1
-          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-6"
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto">
+        {/* Greeting & Name */}
+        <motion.div
+          className="mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <span className="bg-gradient-to-r from-python-electric via-python-yellow to-python-neon bg-clip-text text-transparent animate-gradient-shift">
-            {name}
-          </span>
-        </motion.h1>
+          {/* Greeting */}
+          <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium mb-2 sm:mb-4">
+            <span className="text-dark-text-secondary">Hi there, I'm </span>
+            <span className="bg-gradient-to-r from-python-electric via-python-yellow to-python-neon bg-clip-text text-transparent animate-gradient-shift font-bold">
+              Het Lathiya
+            </span>
+            <span className="text-python-yellow text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl ml-1 sm:ml-2 animate-bounce inline-block">👋</span>
+          </div>
+          {/* Main Name Display */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-display font-bold">
+            <span className="bg-gradient-to-r from-python-electric via-python-yellow to-python-neon bg-clip-text text-transparent animate-gradient-shift">
+              Het Lathiya
+            </span>
+          </h1>
+        </motion.div>
 
-        {/* Title */}
-        <motion.p
-          className="text-xl md:text-2xl lg:text-3xl text-dark-text-secondary mb-8 font-medium"
+        {/* Title with Typing Animation */}
+        <motion.div
+          className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-8 font-medium min-h-[2.5rem] sm:min-h-[3rem] flex items-center justify-center px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          {title}
-        </motion.p>
+          <TypingAnimation
+            texts={typingTexts}
+            speed={100}
+            deleteSpeed={50}
+            pauseDuration={2000}
+            className="text-python-electric font-semibold"
+            cursorClassName="text-python-yellow"
+          />
+        </motion.div>
 
         {/* Description */}
         <motion.p
-          className="text-lg md:text-xl text-dark-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-dark-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}

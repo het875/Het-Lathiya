@@ -116,14 +116,88 @@ const Navigation: React.FC = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Custom Python-themed Design */}
             <motion.button
-              className="md:hidden p-2 text-dark-text-secondary hover:text-python-electric transition-colors"
+              className="md:hidden relative w-12 h-12 rounded-xl bg-gradient-to-br from-python-blue/20 to-python-electric/20 backdrop-blur-sm border border-python-electric/30 hover:border-python-electric/60 transition-all duration-300 flex items-center justify-center group"
               onClick={() => setIsOpen(!isOpen)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 0 20px rgba(30, 144, 255, 0.3)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              animate={isOpen ? { 
+                background: "linear-gradient(135deg, rgba(30, 144, 255, 0.3), rgba(255, 212, 59, 0.2))",
+                borderColor: "rgba(255, 212, 59, 0.8)"
+              } : {}}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {/* Custom Hamburger Lines */}
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <motion.span
+                  className="w-full h-0.5 bg-gradient-to-r from-python-electric to-python-yellow rounded-full origin-center"
+                  animate={isOpen ? {
+                    rotate: 45,
+                    y: 8,
+                    background: "linear-gradient(90deg, #ffd43b, #39ff14)"
+                  } : {
+                    rotate: 0,
+                    y: 0,
+                    background: "linear-gradient(90deg, #1e90ff, #ffd43b)"
+                  }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+                <motion.span
+                  className="w-full h-0.5 bg-gradient-to-r from-python-yellow to-python-neon rounded-full"
+                  animate={isOpen ? {
+                    opacity: 0,
+                    x: -10
+                  } : {
+                    opacity: 1,
+                    x: 0
+                  }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.span
+                  className="w-full h-0.5 bg-gradient-to-r from-python-neon to-python-electric rounded-full origin-center"
+                  animate={isOpen ? {
+                    rotate: -45,
+                    y: -8,
+                    background: "linear-gradient(90deg, #39ff14, #1e90ff)"
+                  } : {
+                    rotate: 0,
+                    y: 0,
+                    background: "linear-gradient(90deg, #39ff14, #1e90ff)"
+                  }}
+                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                />
+              </div>
+              
+              {/* Subtle glow effect */}
+              <motion.div
+                className="absolute inset-0 rounded-xl bg-gradient-to-br from-python-electric/10 to-python-yellow/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                animate={isOpen ? { opacity: 1 } : {}}
+              />
+              
+              {/* Animated dots around button when active */}
+              <AnimatePresence>
+                {isOpen && (
+                  <>
+                    <motion.div
+                      className="absolute -top-1 -right-1 w-2 h-2 bg-python-yellow rounded-full"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      transition={{ delay: 0.1 }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-1 -left-1 w-2 h-2 bg-python-neon rounded-full"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      transition={{ delay: 0.2 }}
+                    />
+                  </>
+                )}
+              </AnimatePresence>
             </motion.button>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Code, Database, Globe, Zap, Download } from 'lucide-react'
 import portfolioHelpers from '../../lib/portfolio-helpers'
 
 const About: React.FC = () => {
-  const { name, aboutMe, resume } = portfolioHelpers.getPersonalInfo()
+  const { aboutMe, resume } = portfolioHelpers.getPersonalInfo()
   const coreCompetencies = portfolioHelpers.getCoreCompetenciesData()
   const stats = portfolioHelpers.getPortfolioStats()
   const totalYears = portfolioHelpers.getTotalExperienceYears()
@@ -86,9 +86,9 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
           >
-            <div className="relative w-full h-96 rounded-2xl bg-gradient-to-br from-python-blue/20 to-python-electric/20 overflow-hidden">
+            <div className="relative w-full h-auto min-h-[500px] rounded-2xl bg-gradient-to-br from-python-blue/20 to-python-electric/20 overflow-hidden">
               {/* Code snippet visual */}
-              <div className="absolute inset-4 bg-dark-bg/80 rounded-xl p-6 font-mono text-sm">
+              <div className="absolute inset-4 bg-dark-bg/80 rounded-xl p-4 md:p-6 font-mono text-xs md:text-sm overflow-auto">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -102,24 +102,70 @@ const About: React.FC = () => {
                   viewport={{ once: true }}
                 >
                   <div className="text-python-blue">
-                    <span className="text-python-electric">const</span> developer = {'{'}
+                    <span className="text-python-electric">class</span> <span className="text-python-yellow">HetLathiya</span>:
                   </div>
-                  <div className="ml-4 text-python-neon">
-                    name: <span className="text-python-yellow">"{name}"</span>,
+                  <div className="ml-4 text-python-blue">
+                    <span className="text-python-electric">def</span> <span className="text-python-yellow">__init__</span>(<span className="text-python-neon">self</span>):
                   </div>
-                  <div className="ml-4 text-python-neon">
-                    skills: <span className="text-python-yellow">["React", "Python", "TypeScript"]</span>,
+                  <div className="ml-8 text-python-neon">
+                    self.name = <span className="text-python-yellow">"Het Lathiya"</span>
                   </div>
-                  <div className="ml-4 text-python-neon">
-                    passion: <span className="text-python-yellow">"Building amazing things"</span>
+                  <div className="ml-8 text-python-neon">
+                    self.role = <span className="text-python-yellow">"Python Software Developer"</span>
                   </div>
-                  <div className="text-python-blue">{'}'}</div>
+                  <div className="ml-8 text-python-neon">
+                    self.location = <span className="text-python-yellow">"Gujarat, India"</span>
+                  </div>
+                  <div className="ml-8 text-python-neon">
+                    self.current_company = <span className="text-python-yellow">"ANV Tech"</span>
+                  </div>
+                  <div className="ml-8 text-python-neon">
+                    self.languages = [<span className="text-python-yellow">"Python"</span>, <span className="text-python-yellow">"C"</span>, <span className="text-python-yellow">"C++"</span>, <span className="text-python-yellow">"SQL"</span>]
+                  </div>
+                  <div className="ml-8 text-python-neon">
+                    self.specialization = [
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Backend Development",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "REST APIs",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "FinTech Systems",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Web Scraping",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Real-time Data Processing"
+                  </div>
+                  <div className="ml-8 text-python-neon">]</div>
+                  <div className="text-python-blue mt-4">
+                    <span className="ml-4 text-python-electric">def</span> <span className="text-python-yellow">get_current_focus</span>(<span className="text-python-neon">self</span>):
+                  </div>
+                  <div className="ml-8 text-python-electric">
+                    return [
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Building scalable microservices architecture",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Developing real-time trading systems",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Implementing fraud detection algorithms",
+                  </div>
+                  <div className="ml-12 text-python-yellow">
+                    "Optimizing API performance"
+                  </div>
+                  <div className="ml-8 text-python-electric">]</div>
                 </motion.div>
               </div>
               
               {/* Floating elements */}
               <motion.div
-                className="absolute top-8 right-8 w-16 h-16 bg-python-electric/30 rounded-full blur-xl"
+                className="absolute top-4 right-4 md:top-8 md:right-8 w-12 h-12 md:w-16 md:h-16 bg-python-electric/30 rounded-full blur-xl"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.3, 0.6, 0.3]
@@ -128,6 +174,19 @@ const About: React.FC = () => {
                   duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut"
+                }}
+              />
+              <motion.div
+                className="absolute bottom-4 left-4 md:bottom-8 md:left-8 w-8 h-8 md:w-12 md:h-12 bg-python-neon/20 rounded-full blur-lg"
+                animate={{
+                  scale: [1, 0.8, 1],
+                  opacity: [0.2, 0.5, 0.2]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
                 }}
               />
             </div>
