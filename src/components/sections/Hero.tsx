@@ -1,12 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Code } from 'lucide-react'
+import { Github, Linkedin, Code } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import portfolioHelpers from '../../lib/portfolio-helpers'
-import { scrollToProjects, scrollToContact, scrollToAbout } from '../../lib/locomotive-scroll'
+import { scrollToProjects, scrollToContact } from '../../lib/locomotive-scroll'
 import BlurText from '../common/BlurText'
 import TextType from '../common/TextType'
+import PixelBlast from './PixelBlast'
 
 const Hero: React.FC = () => {
   const { name, title, headline } = portfolioHelpers.getPersonalInfo()
@@ -14,13 +15,34 @@ const Hero: React.FC = () => {
 
   return (
     <section className="via-dark-surface to-dark-surface-variant relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black">
-      {/* Background Elements */}
+      {/* Background Elements (PixelBlast integrated under visual layers) */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated grid */}
-        <div className="animate-float absolute inset-0 bg-[linear-gradient(rgba(48,105,152,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(48,105,152,0.1)_1px,transparent_1px)] bg-[size:50px_50px]" />
-        {/* Floating orbs */}
+        {/* PixelBlast as the interactive background - full bleed and behind content */}
+        <div className="absolute inset-0 z-0 mix-blend-screen opacity-95">
+          <PixelBlast
+            variant="circle"
+            pixelSize={6}
+            color="#39ff14"
+            patternScale={3}
+            patternDensity={1.2}
+            pixelSizeJitter={0.5}
+            enableRipples
+            rippleSpeed={0.4}
+            rippleThickness={0.12}
+            rippleIntensityScale={1.5}
+            liquid
+            liquidStrength={0.12}
+            liquidRadius={1.2}
+            liquidWobbleSpeed={5}
+            speed={0.6}
+            edgeFade={0.25}
+            transparent
+          />
+        </div>
+
+        {/* Floating orbs (kept as decorative layers above PixelBlast but beneath main content) */}
         <motion.div
-          className="bg-python-electric/20 absolute top-1/4 left-1/4 h-40 w-40 rounded-full blur-3xl sm:h-64 sm:w-64"
+          className="bg-python-electric/18 absolute top-1/4 left-1/4 h-40 w-40 rounded-full blur-3xl sm:h-64 sm:w-64 z-10"
           animate={{
             x: [0, 100, 0],
             y: [0, -50, 0],
@@ -33,7 +55,7 @@ const Hero: React.FC = () => {
           }}
         />
         <motion.div
-          className="bg-python-neon/15 absolute top-3/4 right-1/3 h-32 w-32 rounded-full blur-3xl sm:h-48 sm:w-48"
+          className="bg-python-neon/12 absolute top-3/4 right-1/3 h-32 w-32 rounded-full blur-3xl sm:h-48 sm:w-48 z-10"
           animate={{
             x: [0, -80, 0],
             y: [0, 30, 0],
@@ -66,7 +88,11 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          {title}
+          <span className="inline-block rounded-full px-5 py-2 bg-python-electric/6 ring-1 ring-python-electric/10 backdrop-blur-sm drop-shadow-sm">
+            <span className="bg-gradient-to-r from-python-yellow via-python-electric to-python-blue bg-clip-text text-transparent font-semibold">
+              {title}
+            </span>
+          </span>
         </motion.p>
 
         {/* Description - Premium body font */}
@@ -153,26 +179,6 @@ const Hero: React.FC = () => {
           </motion.a>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-      >
-        <motion.div
-          className="text-dark-text-secondary flex cursor-pointer flex-col items-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          onClick={scrollToAbout}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <span className="mb-2 text-sm">Scroll to explore</span>
-          <ArrowDown size={20} />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }
