@@ -1,23 +1,25 @@
-@import "tailwindcss";
-@import "locomotive-scroll/dist/locomotive-scroll.css";
+@import 'tailwindcss';
 
 /* Python-inspired cinematic portfolio theme */
 @theme {
   /* Premium Typography - Award-Winning Style */
-  --font-display: "Playfair Display", "Cormorant Garamond", "Times New Roman", serif;
-  --font-heading: "Space Grotesk", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-body: "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "IBM Plex Mono", "SF Mono", "Monaco", monospace;
-  --font-tech: "Space Grotesk", "Inter", monospace;
-  
+  --font-display: 'Playfair Display', 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-heading:
+    'Space Grotesk', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans:
+    'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', 'Monaco', monospace;
+  --font-tech: 'Space Grotesk', 'Inter', monospace;
+
   /* Python-inspired color palette */
   --color-python-blue: #306998;
   --color-python-yellow: #ffd43b;
   --color-python-green: #4b8b3b;
   --color-python-electric: #1e90ff;
   --color-python-neon: #39ff14;
-  
+
   /* Dark theme colors (primary) */
   --color-dark-bg: #000000;
   --color-dark-surface: #0a0a0a;
@@ -26,7 +28,7 @@
   --color-dark-text-primary: #ffffff;
   --color-dark-text-secondary: #b3b3b3;
   --color-dark-text-accent: #ffd43b;
-  
+
   /* Light theme colors (secondary) */
   --color-light-bg: #fafafa;
   --color-light-surface: #ffffff;
@@ -35,37 +37,37 @@
   --color-light-text-primary: #1a1a1a;
   --color-light-text-secondary: #666666;
   --color-light-text-accent: #306998;
-  
+
   /* Semantic colors */
   --color-success: #39ff14;
   --color-warning: #ffd43b;
   --color-error: #ff4444;
   --color-info: #1e90ff;
-  
+
   /* Extended spacing */
   --spacing-18: 4.5rem;
   --spacing-88: 22rem;
   --spacing-104: 26rem;
   --spacing-112: 28rem;
   --spacing-128: 32rem;
-  
+
   /* Custom breakpoints */
   --breakpoint-xs: 475px;
   --breakpoint-3xl: 1920px;
-  
+
   /* Animation timing */
   --animate-duration-fast: 0.2s;
   --animate-duration-base: 0.3s;
   --animate-duration-slow: 0.5s;
   --animate-duration-slower: 0.8s;
   --animate-duration-cinematic: 1.2s;
-  
+
   /* Custom easing */
   --animate-ease-dramatic: cubic-bezier(0.25, 0.1, 0.25, 1);
   --animate-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --animate-ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --animate-ease-snappy: cubic-bezier(0.2, 0, 0, 1);
-  
+
   /* Custom shadows with Python colors */
   --shadow-glow: 0 0 20px rgb(255 212 59 / 0.3);
   --shadow-glow-lg: 0 0 40px rgb(255 212 59 / 0.4);
@@ -84,11 +86,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1, "ss02" 1;
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1,
+    'calt' 1,
+    'ss01' 1,
+    'ss02' 1;
   -webkit-font-variant-ligatures: common-ligatures contextual;
   font-variant-ligatures: common-ligatures contextual;
   font-variant-numeric: oldstyle-nums proportional-nums;
-  
+
   /* Default dark theme */
   color-scheme: dark light;
   color: var(--color-dark-text-primary);
@@ -119,7 +126,12 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--color-dark-bg) 0%, var(--color-dark-surface) 50%, var(--color-dark-surface-variant) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-dark-bg) 0%,
+    var(--color-dark-surface) 50%,
+    var(--color-dark-surface-variant) 100%
+  );
   overflow-x: hidden;
   font-family: var(--font-body);
   font-weight: 400;
@@ -127,14 +139,23 @@ body {
 }
 
 /* Premium Typography Hierarchy */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 500;
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.03em;
   color: var(--color-dark-text-primary);
   margin-top: 0;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1;
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1,
+    'calt' 1,
+    'ss01' 1;
 }
 
 h1 {
@@ -157,7 +178,7 @@ h3 {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 500;
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
@@ -205,7 +226,7 @@ p {
 .text-heading {
   font-family: var(--font-heading);
   font-weight: 600;
-  line-height: 1.0;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
@@ -238,7 +259,10 @@ p {
   font-size: clamp(3rem, 8vw, 8rem);
   line-height: 0.85;
   letter-spacing: -0.05em;
-  font-feature-settings: "kern" 1, "liga" 1, "swsh" 1;
+  font-feature-settings:
+    'kern' 1,
+    'liga' 1,
+    'swsh' 1;
 }
 
 .text-section-title {
@@ -421,7 +445,8 @@ a:hover::after {
 }
 
 @keyframes glowPulse {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: var(--shadow-glow);
   }
   50% {
@@ -430,7 +455,8 @@ a:hover::after {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -439,7 +465,8 @@ a:hover::after {
 }
 
 @keyframes gradientShift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {

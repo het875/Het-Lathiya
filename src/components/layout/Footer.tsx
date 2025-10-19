@@ -4,7 +4,6 @@ import { Heart, Code, Coffee, Github, Linkedin, ExternalLink } from 'lucide-reac
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import * as portfolioHelpers from '../../lib/portfolio-helpers'
-import { handleSmoothScroll } from '../../lib/locomotive-scroll'
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
@@ -13,6 +12,14 @@ const Footer: React.FC = () => {
   const personalInfo = portfolioHelpers.getPersonalInfo()
   const { email, phone, location } = personalInfo
   const socialLinks = portfolioHelpers.getSocialLinks()
+
+  const handleSmoothScroll = (href: string) => {
+    const targetId = href.replace('#', '')
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
 
   return (
     <footer className="bg-dark-bg border-dark-border border-t">

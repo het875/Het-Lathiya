@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
-import { scrollToTop } from '../../lib/locomotive-scroll'
 
 const ScrollToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -16,14 +15,17 @@ const ScrollToTop: React.FC = () => {
   }, [])
 
   const handleScrollToTop = () => {
-    scrollToTop()
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
   }
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 p-3 sm:p-3 min-w-[48px] min-h-[48px] bg-gradient-to-r from-python-blue to-python-electric text-white rounded-full shadow-lg hover:shadow-python-blue/50 transition-all duration-300 flex items-center justify-center"
+          className="from-python-blue to-python-electric hover:shadow-python-blue/50 fixed right-4 bottom-4 z-50 flex min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-gradient-to-r p-3 text-white shadow-lg transition-all duration-300 sm:right-8 sm:bottom-8 sm:p-3"
           onClick={handleScrollToTop}
           initial={{ opacity: 0, scale: 0, y: 100 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -32,7 +34,7 @@ const ScrollToTop: React.FC = () => {
           whileTap={{ scale: 0.9 }}
           transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <ArrowUp size={20} className="sm:w-5 sm:h-5" />
+          <ArrowUp size={20} className="sm:h-5 sm:w-5" />
         </motion.button>
       )}
     </AnimatePresence>

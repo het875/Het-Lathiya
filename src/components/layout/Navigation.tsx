@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Home, User, Briefcase, Code, Mail } from 'lucide-react'
-import { handleSmoothScroll } from '../../lib/locomotive-scroll'
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +12,7 @@ const Navigation: React.FC = () => {
     { id: 'about', label: 'About', icon: User, href: '#about' },
     { id: 'projects', label: 'Projects', icon: Code, href: '#projects' },
     { id: 'experience', label: 'Experience', icon: Briefcase, href: '#experience' },
-    { id: 'contact', label: 'Contact', icon: Mail, href: '#contact' }
+    { id: 'contact', label: 'Contact', icon: Mail, href: '#contact' },
   ]
 
   useEffect(() => {
@@ -23,16 +22,14 @@ const Navigation: React.FC = () => {
       // Update active section based on scroll position
       const sections = navItems.map(item => item.id)
       const currentSection = sections.find(section => {
-        const element = section === 'hero' 
-          ? document.body 
-          : document.getElementById(section)
+        const element = section === 'hero' ? document.body : document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
           return rect.top <= 100 && rect.bottom > 100
         }
         return false
       })
-      
+
       if (currentSection) {
         setActiveSection(currentSection)
       }
@@ -43,7 +40,15 @@ const Navigation: React.FC = () => {
   }, [])
 
   const scrollToSection = (href: string) => {
-    handleSmoothScroll(href)
+    const targetId = href.replace('#', '')
+    if (targetId === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
     setIsOpen(false)
   }
 
@@ -51,22 +56,22 @@ const Navigation: React.FC = () => {
     <>
       {/* Main Navigation */}
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-dark-bg/90 backdrop-blur-md border-b border-dark-border/50' 
+        className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-dark-bg/90 border-dark-border/50 border-b backdrop-blur-md'
             : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="max-w-full sm:max-w-3xl md:max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex justify-between items-center">
+        <div className="mx-auto max-w-full px-4 py-3 sm:max-w-3xl sm:px-6 sm:py-4 md:max-w-5xl lg:max-w-6xl">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.a
               href="#"
-              className="text-lg sm:text-xl font-display font-bold bg-gradient-to-r from-python-electric to-python-yellow bg-clip-text text-transparent"
-              onClick={(e) => {
+              className="font-display from-python-electric to-python-yellow bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
+              onClick={e => {
                 e.preventDefault()
                 scrollToSection('#')
               }}
@@ -77,17 +82,17 @@ const Navigation: React.FC = () => {
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            <div className="hidden items-center gap-6 md:flex lg:gap-8">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.id}
                   href={item.href}
-                  className={`relative px-2 lg:px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-300 ${
+                  className={`relative px-2 py-2 text-sm font-medium transition-colors duration-300 lg:px-3 lg:text-base ${
                     activeSection === item.id
                       ? 'text-python-electric'
                       : 'text-dark-text-secondary hover:text-white'
                   }`}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault()
                     scrollToSection(item.href)
                   }}
@@ -99,7 +104,7 @@ const Navigation: React.FC = () => {
                   {item.label}
                   {activeSection === item.id && (
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-python-electric"
+                      className="bg-python-electric absolute right-0 bottom-0 left-0 h-0.5"
                       layoutId="activeIndicator"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
@@ -112,7 +117,7 @@ const Navigation: React.FC = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="md:hidden p-2 text-dark-text-secondary hover:text-python-electric transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="text-dark-text-secondary hover:text-python-electric flex min-h-[44px] min-w-[44px] items-center justify-center p-2 transition-colors md:hidden"
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -143,7 +148,7 @@ const Navigation: React.FC = () => {
 
             {/* Menu Content */}
             <motion.div
-              className="absolute top-16 sm:top-20 left-4 right-4 sm:left-6 sm:right-6 bg-dark-surface/95 backdrop-blur-md rounded-2xl border border-dark-border p-4 sm:p-6"
+              className="bg-dark-surface/95 border-dark-border absolute top-16 right-4 left-4 rounded-2xl border p-4 backdrop-blur-md sm:top-20 sm:right-6 sm:left-6 sm:p-6"
               initial={{ opacity: 0, y: -20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.9 }}
@@ -154,12 +159,12 @@ const Navigation: React.FC = () => {
                   <motion.a
                     key={item.id}
                     href={item.href}
-                    className={`flex items-center gap-3 px-3 sm:px-4 py-3 sm:py-3 rounded-lg transition-colors duration-300 min-h-[48px] ${
+                    className={`flex min-h-[48px] items-center gap-3 rounded-lg px-3 py-3 transition-colors duration-300 sm:px-4 sm:py-3 ${
                       activeSection === item.id
-                        ? 'bg-python-electric/20 text-python-electric border border-python-electric/30'
-                        : 'text-dark-text-secondary hover:text-white hover:bg-dark-bg/50'
+                        ? 'bg-python-electric/20 text-python-electric border-python-electric/30 border'
+                        : 'text-dark-text-secondary hover:bg-dark-bg/50 hover:text-white'
                     }`}
-                    onClick={(e) => {
+                    onClick={e => {
                       e.preventDefault()
                       scrollToSection(item.href)
                     }}
@@ -170,7 +175,7 @@ const Navigation: React.FC = () => {
                     whileTap={{ scale: 0.98 }}
                   >
                     <item.icon size={20} />
-                    <span className="font-medium text-sm sm:text-base">{item.label}</span>
+                    <span className="text-sm font-medium sm:text-base">{item.label}</span>
                   </motion.a>
                 ))}
               </div>
