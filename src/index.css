@@ -1,5 +1,22 @@
 @import 'tailwindcss';
 
+/* Tailwind v4 Responsive Utilities - Critical for mobile navigation */
+@media (width >= 768px) {
+  .md\:hidden {
+    display: none !important;
+  }
+
+  .md\:flex {
+    display: flex !important;
+  }
+}
+
+@media (width < 768px) {
+  .md\:flex {
+    display: none !important;
+  }
+}
+
 /* Python-inspired cinematic portfolio theme */
 @theme {
   /* Premium Typography - Award-Winning Style */

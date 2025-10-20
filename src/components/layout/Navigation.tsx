@@ -65,12 +65,12 @@ const Navigation: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="mx-auto max-w-full px-4 py-3 sm:max-w-3xl sm:px-6 sm:py-4 md:max-w-5xl lg:max-w-6xl">
+        <div className="mx-auto w-full px-4 py-3 sm:px-6 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.a
               href="#"
-              className="font-display from-python-electric to-python-yellow bg-gradient-to-r bg-clip-text text-lg font-bold text-transparent sm:text-xl"
+              className="font-display from-python-electric to-python-yellow bg-gradient-to-r bg-clip-text text-base font-bold text-transparent sm:text-lg md:text-xl"
               onClick={e => {
                 e.preventDefault()
                 scrollToSection('#')
@@ -81,8 +81,8 @@ const Navigation: React.FC = () => {
               Het Lathiya
             </motion.a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden items-center gap-6 md:flex lg:gap-8">
+            {/* Desktop Navigation - hidden on mobile, visible on md and up */}
+            <div className="hidden items-center gap-4 md:flex lg:gap-8">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.id}
@@ -115,12 +115,14 @@ const Navigation: React.FC = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - visible on mobile, hidden on md and up */}
             <motion.button
-              className="text-dark-text-secondary hover:text-python-electric flex min-h-[44px] min-w-[44px] items-center justify-center p-2 transition-colors md:hidden"
+              className="text-dark-text-secondary hover:text-python-electric flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2 transition-colors md:hidden"
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -148,21 +150,21 @@ const Navigation: React.FC = () => {
 
             {/* Menu Content */}
             <motion.div
-              className="bg-dark-surface/95 border-dark-border absolute top-16 right-4 left-4 rounded-2xl border p-4 backdrop-blur-md sm:top-20 sm:right-6 sm:left-6 sm:p-6"
+              className="bg-dark-surface/95 border-dark-border absolute top-16 right-4 left-4 max-h-[calc(100vh-5rem)] overflow-y-auto rounded-2xl border p-4 shadow-2xl backdrop-blur-md sm:top-20 sm:right-6 sm:left-6 sm:p-6"
               initial={{ opacity: 0, y: -20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.9 }}
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <div className="space-y-2 sm:space-y-4">
+              <nav className="space-y-2 sm:space-y-3">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.id}
                     href={item.href}
-                    className={`flex min-h-[48px] items-center gap-3 rounded-lg px-3 py-3 transition-colors duration-300 sm:px-4 sm:py-3 ${
+                    className={`flex min-h-[48px] items-center gap-3 rounded-lg px-3 py-3 transition-all duration-300 sm:min-h-[52px] sm:px-4 sm:py-3 ${
                       activeSection === item.id
-                        ? 'bg-python-electric/20 text-python-electric border-python-electric/30 border'
-                        : 'text-dark-text-secondary hover:bg-dark-bg/50 hover:text-white'
+                        ? 'bg-python-electric/20 text-python-electric border-python-electric/30 border shadow-md'
+                        : 'text-dark-text-secondary hover:bg-dark-bg/50 hover:text-white active:scale-98'
                     }`}
                     onClick={e => {
                       e.preventDefault()
@@ -174,11 +176,11 @@ const Navigation: React.FC = () => {
                     whileHover={{ x: 4 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <item.icon size={20} />
+                    <item.icon size={20} className="flex-shrink-0" />
                     <span className="text-sm font-medium sm:text-base">{item.label}</span>
                   </motion.a>
                 ))}
-              </div>
+              </nav>
             </motion.div>
           </motion.div>
         )}

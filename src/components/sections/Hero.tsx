@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="via-dark-surface to-dark-surface-variant relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black">
+    <section className="via-dark-surface w-full to-dark-surface-variant relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black">
       {/* Background Elements (PixelBlast integrated under visual layers) */}
       <div className="absolute inset-0 overflow-hidden">
         {/* PixelBlast as the interactive background - full bleed and behind content */}
