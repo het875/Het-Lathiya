@@ -211,42 +211,12 @@ const respectsMotionPreference = {
   --cyber-purple: #8a2be2;
   --terminal-orange: #ff6600;
   
-  /* Neutral Grays */
-  --gray-50: #fafafa;
-  --gray-100: #f5f5f5;
-  --gray-200: #e5e5e5;
-  --gray-300: #d4d4d4;
-  --gray-400: #a3a3a3;
-  --gray-500: #737373;
-  --gray-600: #525252;
-  --gray-700: #404040;
-  --gray-800: #262626;
-  --gray-900: #171717;
-  --gray-950: #0a0a0a;
-  
-  /* Dark Theme (Primary) */
-  --background: #000000;
-  --surface: #0a0a0a;
-  --surface-variant: #1a1a1a;
-  --surface-elevated: #262626;
-  
-  /* Light Theme */
-  --background-light: #fafafa;
-  --surface-light: #ffffff;
-  --surface-variant-light: #f5f5f5;
-  --surface-elevated-light: #ffffff;
-  
   /* Semantic Colors */
   --success: var(--python-green);
   --warning: var(--python-yellow);
   --error: #ef4444;
   --info: var(--electric-blue);
   
-  /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #a3a3a3;
-  --text-muted: #737373;
-  --text-inverse: #000000;
 }
 
 /* Light theme overrides */
@@ -289,39 +259,6 @@ const respectsMotionPreference = {
 }
 ```
 
----
-
-## 📐 Spacing & Layout System
-
-### Spacing Scale
-```css
-:root {
-  /* Spacing Scale (based on 8px grid) */
-  --space-0: 0px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-20: 80px;
-  --space-24: 96px;
-  --space-32: 128px;
-  --space-40: 160px;
-  --space-48: 192px;
-  --space-56: 224px;
-  --space-64: 256px;
-  
-  /* Responsive Spacing */
-  --space-section: clamp(4rem, 8vw, 8rem);
-  --space-container: clamp(1rem, 4vw, 2rem);
-}
-```
-
 ### Layout Grid
 ```css
 .container {
@@ -349,114 +286,8 @@ const respectsMotionPreference = {
 
 ## 🔤 Typography System
 
-### Font Configuration
-```css
-:root {
-  /* Font Families */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Satoshi", "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
-  
-  /* Font Sizes */
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-lg: 1.125rem;   /* 18px */
-  --text-xl: 1.25rem;    /* 20px */
-  --text-2xl: 1.5rem;    /* 24px */
-  --text-3xl: 1.875rem;  /* 30px */
-  --text-4xl: 2.25rem;   /* 36px */
-  --text-5xl: 3rem;      /* 48px */
-  --text-6xl: 3.75rem;   /* 60px */
-  --text-7xl: 4.5rem;    /* 72px */
-  --text-8xl: 6rem;      /* 96px */
-  --text-9xl: 8rem;      /* 128px */
-  
-  /* Line Heights */
-  --leading-tight: 1.25;
-  --leading-snug: 1.375;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
-  --leading-loose: 2;
-  
-  /* Font Weights */
-  --font-thin: 100;
-  --font-light: 300;
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  --font-extrabold: 800;
-  --font-black: 900;
-}
-```
-
-### Typography Components
-```css
-.headline-1 {
-  font-family: var(--font-display);
-  font-size: var(--text-6xl);
-  font-weight: var(--font-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
-}
-
-.headline-2 {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--font-semibold);
-  line-height: var(--leading-snug);
-}
-
-.body-large {
-  font-family: var(--font-sans);
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
-}
-
-.body {
-  font-family: var(--font-sans);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-}
-
-.caption {
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  color: var(--text-secondary);
-}
-
-.code {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  background: var(--surface-variant);
-  padding: var(--space-1) var(--space-2);
-  border-radius: 4px;
-}
-```
 
 ---
-
-## 📱 Responsive Design System
-
-### Breakpoints
-```css
-:root {
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
-}
-
-/* Mobile First Approach */
-@media (min-width: 640px) { /* sm */ }
-@media (min-width: 768px) { /* md */ }
-@media (min-width: 1024px) { /* lg */ }
-@media (min-width: 1280px) { /* xl */ }
-@media (min-width: 1536px) { /* 2xl */ }
-```
 
 ### Responsive Animation Scaling
 ```typescript
@@ -593,15 +424,3 @@ src/
 ├── types/                 # TypeScript definitions
 └── data/                  # Static content
 ```
-
-### Git Commit Conventions
-```
-feat: add hero section with cinematic animations
-fix: resolve animation performance on mobile
-style: update Python color palette
-refactor: improve GSAP timeline management
-docs: add animation system documentation
-test: add component interaction tests
-```
-
-This design system will serve as the foundation for creating a world-class, cinematic portfolio that meets Awwwards standards while maintaining exceptional performance and accessibility.
