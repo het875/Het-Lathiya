@@ -1,16 +1,64 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Github, Linkedin, Code } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import portfolioHelpers from '../../lib/portfolio-helpers'
-import BlurText from '../common/BlurText'
-import TextType from '../common/TextType'
 import LightRays from './LightRays'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const Hero: React.FC = () => {
-  const { name, title, headline } = portfolioHelpers.getPersonalInfo()
   const socialLinks = portfolioHelpers.getSocialLinks()
+  const nameRef = useRef<HTMLDivElement>(null)
+
+  // Rotating titles
+  const titles = [
+    'Python Software Developer',
+    'Django | FastAPI Enthusiast',
+    'Back-end API Specialist',
+    'FinTech & Web Scraping Expert',
+  ]
+
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTitleIndex(prevIndex => (prevIndex + 1) % titles.length)
+    }, 3000) // Change title every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // GSAP animation for name reveal
+  useGSAP(
+    () => {
+      if (!nameRef.current) return
+
+      const letters = nameRef.current.querySelectorAll('.letter')
+
+      gsap.fromTo(
+        letters,
+        {
+          opacity: 0,
+          y: 100,
+          rotationX: -90,
+          filter: 'blur(10px)',
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotationX: 0,
+          filter: 'blur(0px)',
+          duration: 1,
+          ease: 'power4.out',
+          stagger: 0.05,
+          delay: 0.2,
+        }
+      )
+    },
+    { scope: nameRef }
+  )
 
   const scrollToProjects = () => {
     const element = document.getElementById('projects')
@@ -27,8 +75,8 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="via-dark-surface to-dark-surface-variant relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black">
-      <div className="absolute inset-0 z-0">
+    <section className="via-dark-surface to-dark-surface-variant relative flex min-h-screen w-full flex-col items-center justify-center bg-gradient-to-br from-black">
+      <div className="absolute inset-0 z-0 w-full">
         <LightRays
           raysOrigin="top-center"
           raysColor="#ffd43b"
@@ -46,67 +94,61 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 mx-auto max-w-full px-4 text-center sm:max-w-3xl sm:px-6 md:max-w-5xl lg:max-w-6xl">
-        {/* Name - Premium Display Typography */}
-        <BlurText
-          text={name}
-          delay={150}
-          animateBy="words"
-          direction="top"
-          className="font-display text-display mb-6 py-2 font-normal italic sm:mb-8"
-        />
+      <div className="relative z-10 mx-auto w-full px-4 text-center sm:px-6 md:px-8">
+        {/* Name - Premium Display Typography - Huge Modern Style */}
+        <div className="mb-10 overflow-visible sm:mb-12">
+          <div
+            ref={nameRef}
+            className="flex flex-col items-center justify-center gap-4 overflow-visible px-2 py-8 sm:flex-row sm:gap-6 md:gap-8"
+            style={{ perspective: '1000px' }}
+          >
+            <h1 className="letter from-python-electric via-python-yellow to-python-neon animate-gradient-shift font-display inline-block overflow-visible bg-gradient-to-r bg-clip-text text-[clamp(4.5rem,10vw,14rem)] font-bold tracking-[-0.01em] text-transparent">
+              Het
+            </h1>
+            <h1 className="letter from-python-electric via-python-yellow to-python-neon animate-gradient-shift font-display inline-block overflow-visible bg-gradient-to-r bg-clip-text text-[clamp(4.5rem,10vw,14rem)] font-bold tracking-[-0.01em] text-transparent">
+              Lathiya
+            </h1>
+          </div>
+        </div>
 
-        {/* Title - Clean heading font */}
-        <motion.p
-          className="font-heading text-dark-text-secondary mb-6 text-xl leading-snug font-medium tracking-tight sm:mb-8 sm:text-2xl md:text-3xl lg:text-4xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <span className="bg-python-electric/6 ring-python-electric/10 inline-block rounded-full px-5 py-2 ring-1 drop-shadow-sm backdrop-blur-sm">
-            <span className="from-python-yellow via-python-electric to-python-blue bg-gradient-to-r bg-clip-text font-semibold text-transparent">
-              {title}
-            </span>
-          </span>
-        </motion.p>
+        {/* Auto-switching Title with Animation */}
+        <div className="mb-12 h-24 sm:mb-14 md:mb-16 lg:mb-20">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentTitleIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              className="font-heading text-dark-text-secondary text-xl leading-relaxed font-semibold tracking-tight sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            >
+              <span className="bg-python-electric/6 ring-python-electric/10 inline-block rounded-full px-8 py-3.5 ring-1 drop-shadow-sm backdrop-blur-sm sm:px-10 sm:py-4 md:px-12 md:py-5 lg:px-14 lg:py-6">
+                <span className="from-python-yellow via-python-electric to-python-blue bg-gradient-to-r bg-clip-text font-bold text-transparent">
+                  {titles[currentTitleIndex]}
+                </span>
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-        {/* Description - Premium body font */}
+        {/* CTA Buttons */}
         <motion.div
-          className="mx-auto mb-8 max-w-full sm:mb-12 sm:max-w-2xl md:max-w-3xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <TextType
-            text={[headline]}
-            typingSpeed={75}
-            pauseDuration={1500}
-            showCursor={true}
-            cursorCharacter="|"
-            className="font-body text-dark-text-secondary text-lg leading-relaxed sm:text-xl md:text-2xl"
-            loop={false}
-            startOnVisible={true}
-          />
-        </motion.div>
-
-        {/* CTA Buttons - Enhanced typography */}
-        <motion.div
-          className="mb-16 flex flex-col items-center justify-center gap-6 sm:flex-row"
+          className="mb-16 flex flex-row items-center justify-center gap-4 sm:mb-18 sm:gap-5 md:gap-6 lg:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <motion.button
-            className="font-heading from-python-blue to-python-electric hover:shadow-python-blue/50  bg-gradient-to-r px-8 py-4 font-semibold tracking-tight text-white shadow-lg transition-all duration-300 "
-            whileHover={{ scale: 1.05, y: -2 }}
+            className="from-python-blue to-python-electric font-heading shadow-python-blue/30 hover:shadow-python-blue/50 rounded-full bg-gradient-to-r px-6 py-2.5 text-sm font-semibold tracking-tight text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 sm:px-8 sm:py-3 sm:text-base md:px-10 md:py-3.5 md:text-lg"
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToProjects}
           >
-            View My Work  
+            View My Work
           </motion.button>
           <motion.button
-            className="font-heading border-python-yellow text-python-yellow hover:bg-python-yellow rounded-lg border-2 px-8 py-4 font-semibold tracking-tight transition-all duration-300 hover:text-black"
-            whileHover={{ scale: 1.05, y: -2 }}
+            className="border-python-yellow font-heading text-python-yellow hover:bg-python-yellow rounded-full border-2 px-6 py-2.5 text-sm font-semibold tracking-tight transition-all duration-300 hover:-translate-y-0.5 hover:text-black active:translate-y-0 sm:px-8 sm:py-3 sm:text-base md:px-10 md:py-3.5 md:text-lg"
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToContact}
           >
@@ -116,7 +158,7 @@ const Hero: React.FC = () => {
 
         {/* Social Links */}
         <motion.div
-          className="flex justify-center gap-6"
+          className="flex justify-center gap-5 sm:gap-6 md:gap-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
@@ -131,12 +173,12 @@ const Hero: React.FC = () => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-dark-text-secondary hover:text-python-electric hover:shadow-python-electric/20 rounded-lg p-3 transition-colors duration-300 hover:shadow-lg"
+              className="text-dark-text-secondary hover:text-python-electric hover:shadow-python-electric/20 rounded-lg p-4 transition-colors duration-300 hover:shadow-lg md:p-5"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.9 }}
               aria-label={label}
             >
-              <Icon size={24} />
+              <Icon size={32} className="md:h-10 md:w-10" />
             </motion.a>
           ))}
 
@@ -145,12 +187,12 @@ const Hero: React.FC = () => {
             href={socialLinks.hackerrank}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dark-text-secondary hover:text-python-electric hover:shadow-python-electric/20 rounded-lg p-3 transition-colors duration-300 hover:shadow-lg"
+            className="text-dark-text-secondary hover:text-python-electric hover:shadow-python-electric/20 rounded-lg p-4 transition-colors duration-300 hover:shadow-lg md:p-5"
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             aria-label="HackerRank"
           >
-            <FontAwesomeIcon icon={faHackerrank} size="lg" />
+            <FontAwesomeIcon icon={faHackerrank} size="2x" className="md:text-4xl" />
           </motion.a>
         </motion.div>
       </div>

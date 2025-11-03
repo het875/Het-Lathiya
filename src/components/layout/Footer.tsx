@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Code, Coffee, Github, Linkedin, ExternalLink } from 'lucide-react'
+import { Github, Linkedin, ExternalLink } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import * as portfolioHelpers from '../../lib/portfolio-helpers'
@@ -22,10 +22,10 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="bg-dark-bg border-dark-border border-t">
-      <div className="mx-auto max-w-full px-4 py-8 sm:max-w-3xl sm:px-6 sm:py-12 md:max-w-5xl lg:max-w-6xl">
+    <footer className="bg-dark-bg border-dark-border overflow-hidden border-t">
+      <div className="mx-auto max-w-7xl overflow-hidden px-4 py-8 sm:px-6 sm:py-12">
         {/* Main Footer Content */}
-        <div className="mb-6 grid grid-cols-1 gap-6 sm:mb-8 sm:grid-cols-2 sm:gap-8 md:grid-cols-4">
+        <div className="mb-6 grid grid-cols-1 gap-6 text-center sm:mb-8 sm:grid-cols-2 sm:gap-8 sm:text-left md:grid-cols-4">
           {/* Brand */}
           <motion.div
             className="sm:col-span-2 md:col-span-1"
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
             <h3 className="font-display from-python-electric to-python-yellow mb-3 bg-gradient-to-r bg-clip-text text-xl font-bold text-transparent sm:mb-4 sm:text-2xl">
               Het Lathiya
             </h3>
-            <p className="text-dark-text-secondary text-sm leading-relaxed sm:text-base">
+            <p className="text-dark-text-secondary mx-auto max-w-sm text-sm leading-relaxed sm:mx-0 sm:text-base">
               {personalInfo.aboutMe.split('.')[0]}. Specializing in Python, FastAPI, and financial
               systems development.
             </p>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                       e.preventDefault()
                       handleSmoothScroll(link.href)
                     }}
-                    className="text-dark-text-secondary hover:text-python-electric inline-block transform text-sm transition-colors duration-300 hover:translate-x-1 sm:text-base"
+                    className="text-dark-text-secondary hover:text-python-electric inline-block text-sm transition-colors duration-300 sm:text-base"
                   >
                     {link.label}
                   </a>
@@ -86,11 +86,11 @@ const Footer: React.FC = () => {
             <h4 className="mb-3 text-base font-semibold text-white sm:mb-4 sm:text-lg">
               Get In Touch
             </h4>
-            <div className="text-dark-text-secondary space-y-1.5 text-sm sm:space-y-2 sm:text-base">
-              <p>{location}</p>
+            <div className="text-dark-text-secondary mx-auto max-w-xs space-y-1.5 text-sm sm:mx-0 sm:space-y-2 sm:text-base">
+              <p className="break-words">{location}</p>
               <a
                 href={`mailto:${email}`}
-                className="hover:text-python-yellow block break-all transition-colors duration-300 sm:break-normal"
+                className="hover:text-python-yellow block break-all transition-colors duration-300"
               >
                 {email}
               </a>
@@ -113,15 +113,15 @@ const Footer: React.FC = () => {
             <h4 className="mb-3 text-base font-semibold text-white sm:mb-4 sm:text-lg">
               Follow Me
             </h4>
-            <div className="flex flex-col space-y-2 sm:space-y-3">
+            <div className="mx-auto flex max-w-xs flex-col items-center space-y-2 sm:mx-0 sm:items-start sm:space-y-3">
               <a
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-dark-text-secondary hover:text-python-electric group flex min-h-[44px] items-center gap-2 p-1 transition-colors duration-300 sm:gap-3"
               >
-                <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="transform text-sm transition-transform duration-300 group-hover:translate-x-1 sm:text-base">
+                <Github className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+                <span className="text-sm transition-transform duration-300 sm:text-base">
                   GitHub
                 </span>
               </a>
@@ -131,8 +131,8 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-dark-text-secondary hover:text-python-blue group flex min-h-[44px] items-center gap-2 p-1 transition-colors duration-300 sm:gap-3"
               >
-                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="transform text-sm transition-transform duration-300 group-hover:translate-x-1 sm:text-base">
+                <Linkedin className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+                <span className="text-sm transition-transform duration-300 sm:text-base">
                   LinkedIn
                 </span>
               </a>
@@ -142,8 +142,8 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-dark-text-secondary hover:text-python-yellow group flex min-h-[44px] items-center gap-2 p-1 transition-colors duration-300 sm:gap-3"
               >
-                <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="transform text-sm transition-transform duration-300 group-hover:translate-x-1 sm:text-base">
+                <ExternalLink className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+                <span className="text-sm transition-transform duration-300 sm:text-base">
                   LeetCode
                 </span>
               </a>
@@ -153,8 +153,11 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-dark-text-secondary hover:text-python-neon group flex min-h-[44px] items-center gap-2 p-1 transition-colors duration-300 sm:gap-3"
               >
-                <FontAwesomeIcon icon={faHackerrank} className="h-4 w-4 sm:h-5 sm:w-5" />
-                <span className="transform text-sm transition-transform duration-300 group-hover:translate-x-1 sm:text-base">
+                <FontAwesomeIcon
+                  icon={faHackerrank}
+                  className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5"
+                />
+                <span className="text-sm transition-transform duration-300 sm:text-base">
                   HackerRank
                 </span>
               </a>
@@ -166,53 +169,38 @@ const Footer: React.FC = () => {
         <div className="border-dark-border mb-6 border-t sm:mb-8"></div>
 
         {/* Bottom Footer */}
-        <div className="flex flex-col items-center justify-between gap-3 sm:flex-row sm:gap-4">
+        <div className="flex flex-col items-center justify-center gap-3 text-center sm:gap-4">
           {/* Copyright */}
           <motion.div
-            className="text-dark-text-secondary flex flex-wrap items-center justify-center gap-1 text-xs sm:justify-start sm:gap-2 sm:text-sm"
+            className="text-dark-text-secondary text-xs sm:text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <span>© {currentYear} Het Lathiya. Made with</span>
-            <Heart className="h-3 w-3 animate-pulse text-red-500 sm:h-4 sm:w-4" />
-            <span>and</span>
-            <Coffee className="h-3 w-3 text-yellow-600 sm:h-4 sm:w-4" />
-            <span>in {location}</span>
+            <span>© {currentYear} Het Lathiya. All rights reserved.</span>
           </motion.div>
 
-          {/* Tech Stack */}
+          {/* Gyldlab Credit */}
           <motion.div
-            className="text-dark-text-secondary flex flex-wrap items-center justify-center gap-1 text-xs sm:justify-end sm:gap-2 sm:text-sm"
+            className="text-xs sm:text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <Code className="h-3 w-3 sm:h-4 sm:w-4" />
-            <span>Built with</span>
-            <span className="text-python-electric">React</span>
-            <span>+</span>
-            <span className="text-python-yellow">TypeScript</span>
-            <span>+</span>
-            <span className="text-python-neon">Tailwind CSS</span>
+            <a
+              href="https://gyldlab.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 transition-colors hover:opacity-80"
+            >
+              <span className="text-python-electric font-bold">Gyldlab</span>
+              <span className="text-white"> for </span>
+              <span className="text-python-yellow font-bold">Het Lathiya</span>
+            </a>
           </motion.div>
         </div>
-
-        {/* LightRays Credit */}
-        <motion.div
-          className="text-dark-text-secondary mt-4 flex items-center justify-center text-xs sm:text-sm"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="opacity-70">Gyldlab for Het Lathiya</span>
-        </motion.div>
-
-        {/* Background Decoration */}
-        <div className="from-python-blue via-python-electric to-python-neon absolute right-0 bottom-0 left-0 h-1 bg-gradient-to-r opacity-30"></div>
       </div>
     </footer>
   )

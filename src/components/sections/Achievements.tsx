@@ -74,10 +74,11 @@ const Achievements = () => {
     <section className="relative min-h-screen w-full bg-black py-24 text-white md:py-32">
       {/* Header */}
       <div className="mb-16 px-6 text-center md:mb-24">
-        <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
-          LeetCode Achievements
+        <h2 className="font-display mb-4 text-2xl leading-tight font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+          <span className="text-python-electric">LeetCode</span>{' '}
+          <span className="text-python-yellow">Achievements</span>
         </h2>
-        <p className="mx-auto max-w-2xl text-lg text-gray-400 md:text-xl">
+        <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg md:text-xl">
           Consistency and dedication in problem-solving excellence
         </p>
       </div>

@@ -1,4 +1,4 @@
-import Navigation from './components/layout/Navigation'
+import Layout from './components/layout/Layout'
 import Hero from './components/sections/Hero'
 import About from './components/sections/About'
 import Projects from './components/sections/Projects'
@@ -10,8 +10,7 @@ import ScrollToTop from './components/common/ScrollToTop'
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-black text-white">
-      <Navigation />
+    <Layout>
       <Hero />
       <About />
       <Projects />
@@ -20,7 +19,7 @@ function App() {
       <Contact />
       <Footer />
       <ScrollToTop />
-    </div>
+    </Layout>
   )
 }
 

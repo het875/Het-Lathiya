@@ -1,25 +1,7 @@
 @import 'tailwindcss';
 
-/* Tailwind v4 Responsive Utilities - Critical for mobile navigation */
-@media (width >= 768px) {
-  .md\:hidden {
-    display: none !important;
-  }
-
-  .md\:flex {
-    display: flex !important;
-  }
-}
-
-@media (width < 768px) {
-  .md\:flex {
-    display: none !important;
-  }
-}
-
 /* Python-inspired cinematic portfolio theme */
 @theme {
-  /* Premium Typography - Award-Winning Style */
   --font-display: 'Playfair Display', 'Cormorant Garamond', 'Times New Roman', serif;
   --font-heading:
     'Space Grotesk', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -28,7 +10,6 @@
     'Helvetica Neue', Arial, sans-serif;
   --font-body: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'SF Mono', 'Monaco', monospace;
-  --font-tech: 'Space Grotesk', 'Inter', monospace;
 
   /* Python-inspired color palette */
   --color-python-blue: #306998;
@@ -61,17 +42,6 @@
   --color-error: #ff4444;
   --color-info: #1e90ff;
 
-  /* Extended spacing */
-  --spacing-18: 4.5rem;
-  --spacing-88: 22rem;
-  --spacing-104: 26rem;
-  --spacing-112: 28rem;
-  --spacing-128: 32rem;
-
-  /* Custom breakpoints */
-  --breakpoint-xs: 475px;
-  --breakpoint-3xl: 1920px;
-
   /* Animation timing */
   --animate-duration-fast: 0.2s;
   --animate-duration-base: 0.3s;
@@ -97,7 +67,6 @@
 /* Global styles with premium typography */
 :root {
   font-family: var(--font-body);
-  line-height: 1.6;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -141,8 +110,6 @@
 
 /* Enhanced body styles */
 body {
-  margin: 0;
-  min-height: 100vh;
   background: linear-gradient(
     135deg,
     var(--color-dark-bg) 0%,
@@ -152,178 +119,28 @@ body {
   overflow-x: hidden;
   font-family: var(--font-body);
   font-weight: 400;
-  line-height: 1.6;
 }
 
-/* Premium Typography Hierarchy */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--color-dark-text-primary);
-  margin-top: 0;
-  font-feature-settings:
-    'kern' 1,
-    'liga' 1,
-    'calt' 1,
-    'ss01' 1;
+/* Hide scrollbars globally while maintaining scroll functionality */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-h1 {
-  font-size: clamp(3rem, 8vw, 8rem);
-  font-weight: 700;
-  font-style: normal;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
-h2 {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+/* Hide scrollbar for all elements */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-h3 {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-h4 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-}
-
-h5 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-h6 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* Body text styling */
-p {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  line-height: 1.65;
-  font-weight: 400;
-  color: var(--color-dark-text-secondary);
-  letter-spacing: -0.01em;
-}
-
-/* Premium text classes */
-.text-display {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-style: normal;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-}
-
-.text-heading {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.text-body {
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: -0.01em;
-}
-
-.text-mono {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.025em;
-}
-
-.text-tech {
-  font-family: var(--font-tech);
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Advanced Premium Typography Classes */
-.text-hero {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(3rem, 8vw, 8rem);
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  font-feature-settings:
-    'kern' 1,
-    'liga' 1,
-    'swsh' 1;
-}
-
-.text-section-title {
-  font-family: var(--font-heading);
-  font-weight: 600;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  text-transform: none;
-}
-
-.text-card-title {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-}
-
-.text-eyebrow {
-  font-family: var(--font-tech);
-  font-weight: 600;
-  font-size: clamp(0.75rem, 1vw, 0.875rem);
-  line-height: 1.2;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.8;
-}
-
-.text-large {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: clamp(1.125rem, 1.8vw, 1.375rem);
-  line-height: 1.6;
-  letter-spacing: -0.01em;
-}
-
-.text-caption {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
-  line-height: 1.4;
-  letter-spacing: 0em;
-  opacity: 0.7;
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 /* Selection styling */
@@ -337,53 +154,15 @@ p {
   color: var(--color-dark-bg);
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-dark-surface);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-python-blue);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-python-electric);
-}
-
 /* Focus styles */
 :focus-visible {
   outline: 2px solid var(--color-python-yellow);
   outline-offset: 2px;
 }
 
-/* Button base styles */
+/* Button base styles - Minimal, most styling in Tailwind */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background: linear-gradient(135deg, var(--color-python-blue), var(--color-python-electric));
-  color: var(--color-dark-text-primary);
   cursor: pointer;
-  transition: all var(--animate-duration-base) var(--animate-ease-dramatic);
-  box-shadow: var(--shadow-python-blue);
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-lg);
-  background: linear-gradient(135deg, var(--color-python-electric), var(--color-python-neon));
-}
-
-button:active {
-  transform: translateY(0);
 }
 
 /* Link styles */
