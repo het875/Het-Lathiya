@@ -6,7 +6,7 @@ import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
 import portfolioHelpers from '../../lib/portfolio-helpers'
 import BlurText from '../common/BlurText'
 import TextType from '../common/TextType'
-import PixelBlast from './PixelBlast'
+import LightRays from './LightRays'
 
 const Hero: React.FC = () => {
   const { name, title, headline } = portfolioHelpers.getPersonalInfo()
@@ -27,59 +27,21 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="via-dark-surface w-full to-dark-surface-variant relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black">
-      {/* Background Elements (PixelBlast integrated under visual layers) */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* PixelBlast as the interactive background - full bleed and behind content */}
-        <div className="absolute inset-0 z-0 opacity-95 mix-blend-screen">
-          <PixelBlast
-            variant="circle"
-            pixelSize={6}
-            color="#39ff14"
-            patternScale={3}
-            patternDensity={1.2}
-            pixelSizeJitter={0.5}
-            enableRipples
-            rippleSpeed={0.4}
-            rippleThickness={0.12}
-            rippleIntensityScale={1.5}
-            liquid
-            liquidStrength={0.12}
-            liquidRadius={1.2}
-            liquidWobbleSpeed={5}
-            speed={0.6}
-            edgeFade={0.25}
-            transparent
-          />
-        </div>
-
-        {/* Floating orbs (kept as decorative layers above PixelBlast but beneath main content) */}
-        <motion.div
-          className="bg-python-electric/18 absolute top-1/4 left-1/4 z-10 h-40 w-40 rounded-full blur-3xl sm:h-64 sm:w-64"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="bg-python-neon/12 absolute top-3/4 right-1/3 z-10 h-32 w-32 rounded-full blur-3xl sm:h-48 sm:w-48"
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 30, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
+    <section className="via-dark-surface to-dark-surface-variant relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black">
+      <div className="absolute inset-0 z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffd43b"
+          raysSpeed={0.5}
+          lightSpread={1.2}
+          rayLength={6}
+          pulsating={true}
+          fadeDistance={5}
+          saturation={9}
+          followMouse={true}
+          mouseInfluence={0.15}
+          noiseAmount={0}
+          distortion={8}
         />
       </div>
 
@@ -135,12 +97,12 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <motion.button
-            className="font-heading from-python-blue to-python-electric hover:shadow-python-blue/50 rounded-lg bg-gradient-to-r px-8 py-4 font-semibold tracking-tight text-white shadow-lg transition-all duration-300"
+            className="font-heading from-python-blue to-python-electric hover:shadow-python-blue/50  bg-gradient-to-r px-8 py-4 font-semibold tracking-tight text-white shadow-lg transition-all duration-300 "
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToProjects}
           >
-            View My Work
+            View My Work  
           </motion.button>
           <motion.button
             className="font-heading border-python-yellow text-python-yellow hover:bg-python-yellow rounded-lg border-2 px-8 py-4 font-semibold tracking-tight transition-all duration-300 hover:text-black"

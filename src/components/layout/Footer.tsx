@@ -200,6 +200,17 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
 
+        {/* LightRays Credit */}
+        <motion.div
+          className="text-dark-text-secondary mt-4 flex items-center justify-center text-xs sm:text-sm"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <span className="opacity-70">Gyldlab for Het Lathiya</span>
+        </motion.div>
+
         {/* Background Decoration */}
         <div className="from-python-blue via-python-electric to-python-neon absolute right-0 bottom-0 left-0 h-1 bg-gradient-to-r opacity-30"></div>
       </div>
