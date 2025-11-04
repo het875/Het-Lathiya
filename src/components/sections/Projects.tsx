@@ -26,10 +26,7 @@ const Projects: React.FC = () => {
             <span className="text-python-neon">Featured</span>{' '}
             <span className="text-python-yellow">Projects</span>
           </h2>
-          <p className="font-body text-dark-text-secondary mx-auto max-w-full text-base leading-relaxed sm:max-w-2xl sm:text-lg md:max-w-3xl md:text-xl">
-            A showcase of my recent work, demonstrating technical expertise and creative
-            problem-solving across various domains and technologies.
-          </p>
+         
         </motion.div>
 
         {/* Featured Projects */}

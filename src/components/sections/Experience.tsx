@@ -23,9 +23,6 @@ const Experience: React.FC = () => {
             <span className="text-python-yellow">Professional</span>{' '}
             <span className="text-python-electric">Experience</span>
           </h2>
-          <p className="text-dark-text-secondary mx-auto max-w-2xl text-lg">
-            {totalYears}+ years of building impactful solutions across diverse industries
-          </p>
         </motion.div>
 
         {/* Experience Cards Grid */}

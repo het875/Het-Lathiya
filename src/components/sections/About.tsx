@@ -30,9 +30,6 @@ const About: React.FC = () => {
             <span className="text-python-electric">About</span>{' '}
             <span className="text-python-yellow">Me</span>
           </h2>
-          <p className="font-body text-dark-text-secondary mx-auto max-w-full px-4 text-base leading-relaxed sm:max-w-2xl sm:text-lg md:max-w-3xl md:text-xl">
-            {aboutMe.split('\n\n')[0]}
-          </p>
         </motion.div>
 
         {/* Main Content */}
@@ -100,35 +97,97 @@ const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, margin: '-100px' }}
           >
-            <div className="from-python-blue/20 to-python-electric/20 relative h-96 w-full overflow-hidden rounded-2xl bg-gradient-to-br">
+            <div className="from-python-blue/20 to-python-electric/20 relative h-[700px] w-full overflow-hidden rounded-2xl bg-gradient-to-br sm:h-[550px] md:h-[600px] lg:h-[650px]">
               {/* Code snippet visual */}
-              <div className="bg-dark-bg/80 absolute inset-4 overflow-hidden rounded-2xl p-6 font-mono text-base leading-relaxed sm:p-8 sm:text-lg">
-                <div className="mb-6 flex items-center gap-2">
-                  <div className="h-3 w-3 flex-shrink-0 rounded-full bg-red-500"></div>
-                  <div className="h-3 w-3 flex-shrink-0 rounded-full bg-yellow-500"></div>
-                  <div className="h-3 w-3 flex-shrink-0 rounded-full bg-green-500"></div>
+              <div className="bg-dark-bg/80 absolute inset-4 overflow-hidden rounded-2xl p-4 font-mono text-xs leading-relaxed sm:p-6 sm:text-sm md:p-8 md:text-base">
+                <div className="mb-4 flex items-center gap-2 sm:mb-6">
+                  <div className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-500 sm:h-3 sm:w-3"></div>
+                  <div className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-yellow-500 sm:h-3 sm:w-3"></div>
+                  <div className="h-2.5 w-2.5 flex-shrink-0 rounded-full bg-green-500 sm:h-3 sm:w-3"></div>
                 </div>
                 <motion.div
-                  className="space-y-3 sm:space-y-4"
+                  className="space-y-1 overflow-y-scroll sm:space-y-0"
+                  style={{
+                    maxHeight: 'calc(100% - 60px)',
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: '#1e90ff rgba(10, 10, 10, 0.5)',
+                    overscrollBehavior: 'contain',
+                  }}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   viewport={{ once: true, margin: '-100px' }}
+                  onWheel={e => {
+                    e.stopPropagation()
+                  }}
+                  tabIndex={0}
                 >
                   <div className="text-python-blue break-words">
-                    <span className="text-python-electric">const</span> developer = {'{'}
+                    <span className="text-python-electric">class</span> HetLathiya:
                   </div>
-                  <div className="text-python-neon ml-4 break-words">
-                    name: <span className="text-python-yellow">"{name}"</span>,
+                  <div className="text-python-neon ml-2 break-words sm:ml-4">
+                    <span className="text-python-electric">def</span>{' '}
+                    <span className="text-python-yellow">__init__</span>(
+                    <span className="text-python-electric">self</span>):
                   </div>
-                  <div className="text-python-neon ml-4 break-words">
-                    skills:{' '}
-                    <span className="text-python-yellow">["React", "Python", "TypeScript"]</span>,
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    self.name = <span className="text-python-yellow">"{name}"</span>
                   </div>
-                  <div className="text-python-neon ml-4 break-words">
-                    passion: <span className="text-python-yellow">"Building amazing things"</span>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    self.role ={' '}
+                    <span className="text-python-yellow">"Python Software Developer"</span>
                   </div>
-                  <div className="text-python-blue break-words">{'}'}</div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    self.location = <span className="text-python-yellow">"Gujarat, India"</span>
+                  </div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    self.current_company = <span className="text-python-yellow">"ANV Tech"</span>
+                  </div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    self.languages = [
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Python", "C", "C++", "SQL"
+                  </div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">]</div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    self.specialization = [
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Backend Development",
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">"REST APIs",</div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "FinTech Systems",
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Web Scraping",
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Real-time Data Processing"
+                  </div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">]</div>
+                  <div className="text-python-neon mt-3 ml-2 break-words sm:mt-4 sm:ml-4">
+                    <span className="text-python-electric">def</span>{' '}
+                    <span className="text-python-yellow">get_current_focus</span>(
+                    <span className="text-python-electric">self</span>):
+                  </div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">
+                    <span className="text-python-electric">return</span> [
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Building scalable microservices architecture",
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Developing real-time trading systems",
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Implementing fraud detection algorithms",
+                  </div>
+                  <div className="text-python-yellow ml-6 break-words sm:ml-12">
+                    "Optimizing API performance"
+                  </div>
+                  <div className="text-python-neon ml-4 break-words sm:ml-8">]</div>
                 </motion.div>
               </div>
 

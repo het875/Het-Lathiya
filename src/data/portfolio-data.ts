@@ -330,6 +330,61 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    id: 'anv-fincap-bse-market-feed',
+    title: 'ANV Fincap – Real-Time BSE Market Feed System',
+    description:
+      'A real-time financial data processing system connecting to the Bombay Stock Exchange (BSE) using official WebSocket feeds.',
+    longDescription:
+      'A high-performance real-time financial data processing system that connects to the Bombay Stock Exchange (BSE) using official WebSocket feeds. The system retrieves raw binary tokens, decodes them into integers, and extracts key market insights such as market picture, market depth, and OHLC data. Built with FastAPI and WebSocket.IO for high-speed asynchronous data streaming and efficient API communication.',
+    techStack: ['FastAPI', 'WebSocket.IO', 'Python', 'AsyncIO', 'CSV'],
+    keyFeatures: [
+      'Real-time BSE WebSocket integration',
+      'Binary token decoding and processing',
+      'Market picture and depth extraction',
+      'OHLC data processing and storage',
+      'High-speed asynchronous data streaming',
+      'CSV-based data storage for analytics',
+    ],
+    role: [
+      'Architected real-time data processing pipeline',
+      'Implemented WebSocket integration with BSE feeds',
+      'Developed binary data decoding algorithms',
+      'Built asynchronous data streaming with FastAPI',
+    ],
+    status: 'production',
+    category: 'api',
+    featured: true,
+  },
+  {
+    id: 'cradbuzzpay-payment-system',
+    title: 'CradBuzsPay Payment System',
+    description:
+      'A FinTech-based ERP payment platform enabling credit card bill payments, utility management, and mobile recharges.',
+    longDescription:
+      'A comprehensive FinTech-based ERP payment platform built during freelancing that enables credit card bill payments, utility bill management, mobile recharges, and fund withdrawals. Features a multi-role user management system with controlled access to specific modules. The system includes secure authentication (JWT) and role-based access control (RBAC), allowing efficient handling of financial workflows and user activities.',
+    techStack: ['Django', 'REST API', 'Python', 'JWT', 'RBAC', 'ERP'],
+    keyFeatures: [
+      'Credit card bill payment processing',
+      'Utility bill management system',
+      'Mobile recharge integration',
+      'Fund withdrawal capabilities',
+      'Multi-role user management',
+      'JWT-based secure authentication',
+      'Role-based access control (RBAC)',
+      'Financial workflow automation',
+    ],
+    role: [
+      'Designed and implemented ERP payment platform',
+      'Developed multi-role user management system',
+      'Integrated secure JWT authentication',
+      'Built role-based access control modules',
+      'Implemented RESTful API architecture',
+    ],
+    status: 'completed',
+    category: 'management-system',
+    featured: true,
+  },
+  {
     id: 'water-purifier-management',
     title: 'Water Purifier Service Management System',
     description:

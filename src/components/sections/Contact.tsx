@@ -138,10 +138,6 @@ const Contact: React.FC = () => {
             <span className="text-python-electric">Let's</span>{' '}
             <span className="text-python-yellow">Connect</span>
           </h2>
-          <p className="text-dark-text-secondary mx-auto max-w-full px-4 text-base sm:max-w-2xl sm:text-xl md:max-w-3xl">
-            Ready to bring your ideas to life? Let's discuss how we can work together to create
-            something amazing.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 overflow-hidden sm:gap-12 lg:grid-cols-2 lg:gap-16">

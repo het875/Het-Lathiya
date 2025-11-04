@@ -1,13 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import type { SVGProps } from 'react'
 import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const Python = (props: SVGProps<SVGSVGElement>) => {
   const path1Ref = useRef<SVGPathElement>(null)
   const path2Ref = useRef<SVGPathElement>(null)
   const imageRef = useRef<SVGImageElement>(null)
 
-  useEffect(() => {
+  useGSAP(() => {
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -95,7 +96,7 @@ const Python = (props: SVGProps<SVGSVGElement>) => {
   }, [])
 
   return (
-    <svg {...props} fill="none" viewBox="16 16 32 32">
+    <svg {...props} fill="none" viewBox="15 15 35 35">
       <defs>
         <clipPath id="python-clip-path">
           <path d="M31.885 16c-8.124 0-7.617 3.523-7.617 3.523l.01 3.65h7.752v1.095H21.197S16 23.678 16 31.876c0 8.196 4.537 7.906 4.537 7.906h2.708v-3.804s-.146-4.537 4.465-4.537h7.688s4.32.07 4.32-4.175v-7.019S40.374 16 31.885 16zm-4.275 2.454a1.394 1.394 0 1 1 0 2.79 1.393 1.393 0 0 1-1.395-1.395c0-.771.624-1.395 1.395-1.395z" />
@@ -139,10 +140,10 @@ const Python = (props: SVGProps<SVGSVGElement>) => {
       <image
         ref={imageRef}
         href="/me.avif"
-        x="16"
-        y="16"
-        width="32"
-        height="32"
+        x="15"
+        y="15"
+        width="35"
+        height="35"
         clipPath="url(#python-clip-path)"
         preserveAspectRatio="xMidYMid slice"
       />
