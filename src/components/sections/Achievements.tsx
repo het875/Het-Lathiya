@@ -71,39 +71,41 @@ const Achievements = () => {
   }
 
   return (
-    <section className="relative min-h-screen w-full bg-black py-24 text-white md:py-32">
-      {/* Header */}
-      <div className="mb-16 px-6 text-center md:mb-24">
-        <h2 className="font-display mb-4 text-2xl leading-tight font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-          <span className="text-python-electric">LeetCode</span>{' '}
-          <span className="text-python-yellow">Achievements</span>
-        </h2>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg md:text-xl">
-          Consistency and dedication in problem-solving excellence
-        </p>
-      </div>
+    <section className="from-dark-bg via-dark-surface to-dark-surface-variant relative w-full overflow-hidden bg-gradient-to-br px-4 py-12 sm:px-6 sm:py-20">
+      <div className="relative mx-auto w-full max-w-7xl overflow-hidden">
+        {/* Header */}
+        <div className="mb-10 text-center sm:mb-16">
+          <h2 className="font-display mb-4 text-2xl font-bold sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
+            <span className="text-python-electric">LeetCode</span>{' '}
+            <span className="text-python-yellow">Achievements</span>
+          </h2>
+          <p className="text-dark-text-secondary mx-auto max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl">
+            Consistency and dedication in problem-solving excellence
+          </p>
+        </div>
 
-      {/* Achievements Grid */}
-      <div
-        ref={containerRef}
-        className="achievements-container relative flex w-full flex-col gap-12 overflow-hidden px-6 md:gap-16 md:px-12 lg:px-24"
-      >
-        {createRows()}
-      </div>
+        {/* Achievements Grid */}
+        <div
+          ref={containerRef}
+          className="achievements-container relative flex w-full flex-col gap-8 overflow-hidden sm:gap-12 md:gap-16"
+        >
+          {createRows()}
+        </div>
 
-      {/* Footer Text */}
-      <div className="mt-16 px-6 text-center md:mt-24">
-        <p className="text-sm text-gray-500 md:text-base">
-          View all achievements on{' '}
-          <a
-            href="https://leetcode.com/u/hetlathiya875/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-python-yellow hover:text-python-blue transition-colors duration-300"
-          >
-            LeetCode Profile
-          </a>
-        </p>
+        {/* Footer Text */}
+        <div className="mt-10 text-center sm:mt-16">
+          <p className="text-dark-text-secondary text-sm sm:text-base">
+            View all achievements on{' '}
+            <a
+              href="https://leetcode.com/u/hetlathiya875/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-python-yellow hover:text-python-electric transition-colors duration-300"
+            >
+              LeetCode Profile
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   )
@@ -134,7 +136,7 @@ const AchievementItem = ({ achievement }: AchievementItemProps) => {
         }`}
       >
         {/* Image Container */}
-        <div className="achievement-img bg-surface-variant aspect-[4/3] overflow-hidden rounded-lg border border-gray-800 transition-transform duration-500 group-hover:scale-105">
+        <div className="achievement-img bg-dark-surface/50 border-dark-border group-hover:border-python-electric/50 aspect-[4/3] overflow-hidden rounded-xl border transition-transform duration-500 group-hover:scale-105">
           <img
             src={achievement.img}
             alt={achievement.name}
@@ -148,7 +150,7 @@ const AchievementItem = ({ achievement }: AchievementItemProps) => {
           <h3 className="group-hover:text-python-yellow mb-2 text-xl font-semibold tracking-tight transition-colors duration-300 md:text-2xl">
             {achievement.name}
           </h3>
-          <p className="text-sm leading-relaxed text-gray-400 md:text-base">
+          <p className="text-dark-text-secondary text-sm leading-relaxed md:text-base">
             {achievement.description}
           </p>
         </div>

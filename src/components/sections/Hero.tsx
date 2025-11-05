@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Github, Linkedin, Code } from 'lucide-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
+import { Github, Linkedin } from 'lucide-react'
 import portfolioHelpers from '../../lib/portfolio-helpers'
 import LightRays from './LightRays'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { LeetCode } from '../common/LeetCode'
+import { HackerRank } from '../common/HackerRank'
 
 const Hero: React.FC = () => {
   const socialLinks = portfolioHelpers.getSocialLinks()
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             className="flex flex-col items-center justify-center gap-4 overflow-visible px-2 sm:flex-row sm:gap-6 md:gap-8"
             style={{ perspective: '1000px' }}
           >
-            <h1 className="letter from-python-electric via-python-yellow to-python-neon animate-gradient-shift font-display inline-block overflow-visible  bg-gradient-to-r bg-clip-text text-[clamp(4.5rem,10vw,11rem)] font-bold tracking-[-0.01em] text-transparent">
+            <h1 className="letter from-python-electric via-python-yellow to-python-neon animate-gradient-shift font-display inline-block overflow-visible bg-gradient-to-r bg-clip-text text-[clamp(4.5rem,10vw,11rem)] font-bold tracking-[-0.01em] text-transparent">
               Het
             </h1>
             <h1 className="letter from-python-electric via-python-yellow to-python-neon animate-gradient-shift font-display inline-block overflow-visible bg-gradient-to-r bg-clip-text text-[clamp(4.5rem,10vw,11rem)] font-bold tracking-[-0.01em] text-transparent">
@@ -166,7 +166,8 @@ const Hero: React.FC = () => {
           {[
             { icon: Github, href: socialLinks.github, label: 'GitHub' },
             { icon: Linkedin, href: socialLinks.linkedin, label: 'LinkedIn' },
-            { icon: Code, href: socialLinks.leetcode, label: 'LeetCode' },
+            { icon: LeetCode, href: socialLinks.leetcode, label: 'LeetCode' },
+            { icon: HackerRank, href: socialLinks.hackerrank, label: 'HackerRank' },
           ].map(({ icon: Icon, href, label }) => (
             <motion.a
               key={label}
@@ -178,12 +179,12 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.9 }}
               aria-label={label}
             >
-                <Icon size={32} className="md:h-8 md:w-8" />
-              </motion.a>
+              <Icon size={32} className="md:h-8 md:w-8" />
+            </motion.a>
           ))}
 
-          {/* HackerRank with FontAwesome icon */}
-          <motion.a
+          {/* HackerRank with custom SVG icon */}
+          {/* <motion.a
             href={socialLinks.hackerrank}
             target="_blank"
             rel="noopener noreferrer"
@@ -192,8 +193,8 @@ const Hero: React.FC = () => {
             whileTap={{ scale: 0.9 }}
             aria-label="HackerRank"
           >
-            <FontAwesomeIcon icon={faHackerrank} size="2x" className="md:text-4xl" />
-          </motion.a>
+            <img src={HackerRankIcon} alt="HackerRank" className="h-8 w-8 md:h-10 md:w-10" />
+          </motion.a> */}
         </motion.div>
       </div>
     </section>

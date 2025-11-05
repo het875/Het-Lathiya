@@ -1,20 +1,10 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  CheckCircle,
-  Code,
-  AlertCircle,
-} from 'lucide-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react'
 import portfolioHelpers from '../../lib/portfolio-helpers'
 import { sendEmail, validateEmailJSConfig } from '../../utils/email'
+import { HackerRank } from '../common/HackerRank'
+import { LeetCode } from '../common/LeetCode'
 
 interface FormData {
   name: string
@@ -117,7 +107,8 @@ const Contact: React.FC = () => {
   const socialLinksFormatted = [
     { icon: Github, href: socialLinksData.github, label: 'GitHub' },
     { icon: Linkedin, href: socialLinksData.linkedin, label: 'LinkedIn' },
-    { icon: Code, href: socialLinksData.leetcode, label: 'LeetCode' },
+    { icon: LeetCode, href: socialLinksData.leetcode, label: 'LeetCode' },
+    { icon: HackerRank, href: socialLinksData.hackerrank, label: 'HackerRank' },
   ]
 
   return (
@@ -183,39 +174,23 @@ const Contact: React.FC = () => {
                 Follow Me
               </h4>
               <div className="flex flex-wrap gap-3 sm:gap-4">
-                {socialLinksFormatted.map((social, index) => (
+                {socialLinksFormatted.map(({ icon: Icon, href, label }, index) => (
                   <motion.a
-                    key={social.label}
-                    href={social.href}
+                    key={label}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-dark-surface border-dark-border text-dark-text-secondary hover:text-python-electric hover:border-python-electric/50 rounded-lg border p-2.5 transition-all duration-300 sm:p-3"
+                    className="bg-dark-surface border-dark-border text-dark-text-secondary hover:text-python-electric hover:border-python-electric/50 flex items-center justify-center rounded-lg border p-2.5 transition-all duration-300 sm:p-3"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                     viewport={{ once: true, margin: '-100px' }}
                     whileHover={{ scale: 1.1 }}
-                    aria-label={social.label}
+                    aria-label={label}
                   >
-                    <social.icon size={18} className="sm:h-5 sm:w-5" />
+                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </motion.a>
                 ))}
-
-                {/* HackerRank with FontAwesome icon */}
-                <motion.a
-                  href={socialLinksData.hackerrank}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-dark-surface border-dark-border text-dark-text-secondary hover:text-python-electric hover:border-python-electric/50 rounded-lg border p-2.5 transition-all duration-300 sm:p-3"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 0.5 + socialLinksFormatted.length * 0.1 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  whileHover={{ scale: 1.1 }}
-                  aria-label="HackerRank"
-                >
-                  <FontAwesomeIcon icon={faHackerrank} className="text-lg sm:text-xl" />
-                </motion.a>
               </div>
             </div>
 

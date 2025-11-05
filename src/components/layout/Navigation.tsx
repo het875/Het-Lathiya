@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { Code2, Terminal, Github, Linkedin } from 'lucide-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
+import { Terminal, Github, Linkedin } from 'lucide-react'
 import { NAVIGATION } from '../../data/constants'
 import { Python } from '../common/Python'
+import { LeetCode } from '../common/LeetCode'
+import { HackerRank } from '../common/HackerRank'
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -365,16 +365,13 @@ const Navigation: React.FC = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       {social.name === 'HackerRank' ? (
-                        <FontAwesomeIcon
-                          icon={faHackerrank}
-                          className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors"
-                        />
+                        <HackerRank className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
                       ) : social.icon === 'github' ? (
                         <Github className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
                       ) : social.icon === 'linkedin' ? (
                         <Linkedin className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
                       ) : social.icon === 'code' ? (
-                        <Code2 className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
+                        <LeetCode className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
                       ) : (
                         <Terminal className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
                       )}

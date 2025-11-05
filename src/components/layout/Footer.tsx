@@ -1,8 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, ExternalLink } from 'lucide-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHackerrank } from '@fortawesome/free-brands-svg-icons'
+import { Github, Linkedin } from 'lucide-react'
+import { LeetCode } from '../common/LeetCode'
+import { HackerRank } from '../common/HackerRank'
 import * as portfolioHelpers from '../../lib/portfolio-helpers'
 
 const Footer: React.FC = () => {
@@ -142,7 +142,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-dark-text-secondary hover:text-python-yellow group flex min-h-[44px] items-center gap-2 p-1 transition-colors duration-300 sm:gap-3"
               >
-                <ExternalLink className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+                <LeetCode className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
                 <span className="text-sm transition-transform duration-300 sm:text-base">
                   LeetCode
                 </span>
@@ -153,10 +153,7 @@ const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-dark-text-secondary hover:text-python-neon group flex min-h-[44px] items-center gap-2 p-1 transition-colors duration-300 sm:gap-3"
               >
-                <FontAwesomeIcon
-                  icon={faHackerrank}
-                  className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5"
-                />
+                <HackerRank className="h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
                 <span className="text-sm transition-transform duration-300 sm:text-base">
                   HackerRank
                 </span>
