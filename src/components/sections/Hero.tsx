@@ -179,22 +179,9 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.9 }}
               aria-label={label}
             >
-              <Icon size={32} className="md:h-8 md:w-8" />
+              <Icon size={32} className="h-8 w-8" />
             </motion.a>
           ))}
-
-          {/* HackerRank with custom SVG icon */}
-          {/* <motion.a
-            href={socialLinks.hackerrank}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dark-text-secondary hover:text-python-electric hover:shadow-python-electric/20 rounded-lg p-4 transition-colors duration-300 hover:shadow-lg md:p-5"
-            whileHover={{ scale: 1.1, y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            aria-label="HackerRank"
-          >
-            <img src={HackerRankIcon} alt="HackerRank" className="h-8 w-8 md:h-10 md:w-10" />
-          </motion.a> */}
         </motion.div>
       </div>
     </section>

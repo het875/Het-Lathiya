@@ -184,11 +184,11 @@ const Contact: React.FC = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                    viewport={{ once: true, margin: '-100px' }}
+                    
                     whileHover={{ scale: 1.1 }}
                     aria-label={label}
                   >
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <Icon className="h-5 w-5" />
                   </motion.a>
                 ))}
               </div>

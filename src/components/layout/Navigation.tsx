@@ -136,9 +136,7 @@ const Navigation: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         className={`fixed top-6 right-6 z-[100] flex items-center gap-3 ${
-          scrolled
-            ? 'rounded-full border border-white/10 bg-black/80 px-4 py-3 backdrop-blur-xl'
-            : ''
+          scrolled ? 'rounded-full border border-white/10 bg-black/80 p-2 backdrop-blur-xl' : ''
         } transition-all duration-500`}
       >
         {/* Hamburger Menu */}
@@ -240,7 +238,7 @@ const Navigation: React.FC = () => {
 
             {/* Content Container */}
             <div
-              className="relative flex h-full flex-col items-center justify-center px-8 md:px-16"
+              className="relative flex h-svh flex-col items-center justify-center px-4 py-20 sm:px-6 sm:py-24 md:px-12 lg:px-16"
               onClick={e => e.stopPropagation()}
             >
               {/* Developer Branding */}
@@ -248,25 +246,25 @@ const Navigation: React.FC = () => {
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="absolute top-4 left-4 flex items-center gap-2 sm:top-8 sm:left-8 sm:gap-3"
+                className="absolute top-3 left-3 flex items-center gap-2 sm:top-6 sm:left-6 sm:gap-3 md:top-8 md:left-8"
               >
-                <Python className="h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24" />
+                <Python className="h-10 w-10 flex-shrink-0 sm:h-14 sm:w-14 md:h-20 md:w-20 lg:h-24 lg:w-24" />
                 <div className="text-left">
-                  <p className="text-python-yellow/80 font-mono text-xs sm:text-sm">
+                  <p className="text-python-yellow/80 font-mono text-[10px] sm:text-xs md:text-sm">
                     {'<developer>'}
                   </p>
-                  <p className="font-heading text-sm font-bold text-white sm:text-lg">
+                  <p className="font-heading text-xs font-bold text-white sm:text-sm md:text-lg lg:text-xl">
                     Het Lathiya
                   </p>
-                  <p className="text-python-yellow/80 font-mono text-[10px] sm:text-xs">
+                  <p className="text-python-yellow/80 font-mono text-[8px] sm:text-[10px] md:text-xs">
                     {'</developer>'}
                   </p>
                 </div>
               </motion.div>
 
-              {/* Navigation Links */}
-              <nav className="relative z-10 w-full max-w-4xl px-4 sm:px-0">
-                <ul className="space-y-2 sm:space-y-2">
+              {/* Navigation Links - FIXED: Constrained width */}
+              <nav className="relative z-10 flex items-center justify-center px-2 sm:px-12 md:px-16 lg:px-20">
+                <ul className="space-y-4 sm:space-y-2 md:space-y-3">
                   {NAVIGATION.main.map((item, index) => (
                     <motion.li
                       key={item.id}
@@ -276,67 +274,74 @@ const Navigation: React.FC = () => {
                       className="perspective-1000"
                       style={{ opacity: 0 }}
                     >
-                      <motion.a
+                      <a
                         href={item.href}
                         onClick={e => {
                           e.preventDefault()
                           handleNavClick(item.href)
                         }}
-                        className={`group font-heading relative block px-4 py-4 text-3xl font-bold transition-all duration-300 sm:px-8 sm:py-6 sm:text-5xl md:text-7xl lg:text-8xl ${
-                          activeSection === item.id
-                            ? 'text-python-yellow'
-                            : 'text-white/60 hover:text-white'
-                        }`}
-                        whileHover={{ x: 20 }}
-                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                        className={`group font-heading relative inline-flex overflow-hidden px-2 py-2 transition-all duration-300 sm:px-4 sm:py-3 md:px-6 md:py-4`}
                       >
-                        {/* Number prefix */}
-                        <span className="text-python-yellow/60 inline-block w-12 font-mono text-lg sm:w-16 sm:text-2xl md:w-20 md:text-3xl">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
+                        {/* Hover animation wrapper */}
+                        <motion.div
+                          className="flex items-center"
+                          whileHover={{ x: 20 }}
+                          transition={{ duration: 0.3, ease: 'easeOut' }}
+                        >
+                          {/* Number prefix */}
+                          <span className="text-python-yellow/60 mr-2 inline-block flex-shrink-0 font-mono text-md sm:mr-3 sm:text-lg md:mr-4 md:text-xl lg:text-2xl">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
 
-                        {/* Link text */}
-                        <span className="relative inline-block">
-                          {item.name}
+                          {/* Link text */}
+                          <span
+                            className={`relative inline-block text-3xl font-bold break-words transition-colors duration-300 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl ${
+                              activeSection === item.id
+                                ? 'text-python-yellow'
+                                : 'text-white/60 group-hover:text-white'
+                            }`}
+                          >
+                            {item.name}
 
-                          {/* Underline effect */}
-                          <motion.span
-                            className="from-python-yellow via-python-neon to-python-electric absolute bottom-0 left-0 h-1 w-full origin-left bg-gradient-to-r"
-                            initial={{ scaleX: 0 }}
-                            whileHover={{ scaleX: 1 }}
-                            transition={{ duration: 0.4, ease: 'easeOut' }}
-                          />
+                            {/* Underline effect */}
+                            <motion.span
+                              className="from-python-yellow via-python-neon to-python-electric absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r sm:h-1"
+                              initial={{ scaleX: 0 }}
+                              whileHover={{ scaleX: 1 }}
+                              transition={{ duration: 0.4, ease: 'easeOut' }}
+                            />
 
-                          {/* Glow effect on active */}
+                            {/* Glow effect on active */}
+                            {activeSection === item.id && (
+                              <motion.span
+                                className="bg-python-yellow/10 absolute -inset-2 -z-10 rounded-lg blur-xl sm:-inset-4"
+                                animate={{
+                                  opacity: [0.3, 0.6, 0.3],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                  ease: 'easeInOut',
+                                }}
+                              />
+                            )}
+                          </span>
+
+                          {/* Terminal cursor for active item */}
                           {activeSection === item.id && (
                             <motion.span
-                              className="bg-python-yellow/10 absolute -inset-4 -z-10 rounded-lg blur-xl"
-                              animate={{
-                                opacity: [0.3, 0.6, 0.3],
-                              }}
+                              className="bg-python-neon ml-1 inline-block h-5 w-1 align-middle sm:ml-2 sm:h-8 sm:w-2 md:ml-3 md:h-12 md:w-2 lg:h-16 lg:w-3 xl:h-20 xl:w-4"
+                              style={{ verticalAlign: 'middle' }}
+                              animate={{ opacity: [1, 0, 1] }}
                               transition={{
-                                duration: 2,
+                                duration: 1,
                                 repeat: Infinity,
-                                ease: 'easeInOut',
+                                ease: 'linear',
                               }}
                             />
                           )}
-                        </span>
-
-                        {/* Terminal cursor for active item */}
-                        {activeSection === item.id && (
-                          <motion.span
-                            className="bg-python-neon ml-2 inline-block h-8 w-2 align-middle sm:ml-4 sm:h-12 sm:w-3 md:h-20 md:w-4 lg:h-24"
-                            style={{ verticalAlign: 'middle' }}
-                            animate={{ opacity: [1, 0, 1] }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              ease: 'linear',
-                            }}
-                          />
-                        )}
-                      </motion.a>
+                        </motion.div>
+                      </a>
                     </motion.li>
                   ))}
                 </ul>
@@ -347,17 +352,17 @@ const Navigation: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute right-4 bottom-4 left-4 flex flex-col items-center justify-between gap-4 sm:right-8 sm:bottom-8 sm:left-8 sm:gap-6 md:flex-row"
+                className="absolute right-3 bottom-3 left-3 flex flex-col items-center justify-between gap-3 sm:right-6 sm:bottom-6 sm:left-6 sm:gap-4 md:right-8 md:bottom-8 md:left-8 md:flex-row md:gap-6"
               >
                 {/* Social Links */}
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
                   {NAVIGATION.social.map((social, index) => (
                     <motion.a
                       key={social.name}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group border-python-yellow/30 hover:border-python-yellow relative flex h-12 w-12 items-center justify-center rounded-full border bg-white/5 transition-all duration-300"
+                      className="group border-python-yellow/30 hover:border-python-yellow relative flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border bg-white/5 transition-all duration-300 sm:h-12 sm:w-12"
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
@@ -365,15 +370,15 @@ const Navigation: React.FC = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       {social.name === 'HackerRank' ? (
-                        <HackerRank className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
+                        <HackerRank className="text-python-yellow group-hover:text-python-neon h-4 w-4 transition-colors sm:h-5 sm:w-5" />
                       ) : social.icon === 'github' ? (
-                        <Github className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
+                        <Github className="text-python-yellow group-hover:text-python-neon h-4 w-4 transition-colors sm:h-5 sm:w-5" />
                       ) : social.icon === 'linkedin' ? (
-                        <Linkedin className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
+                        <Linkedin className="text-python-yellow group-hover:text-python-neon h-4 w-4 transition-colors sm:h-5 sm:w-5" />
                       ) : social.icon === 'code' ? (
-                        <LeetCode className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
+                        <LeetCode className="text-python-yellow group-hover:text-python-neon h-4 w-4 transition-colors sm:h-5 sm:w-5" />
                       ) : (
-                        <Terminal className="text-python-yellow group-hover:text-python-neon h-5 w-5 transition-colors" />
+                        <Terminal className="text-python-yellow group-hover:text-python-neon h-4 w-4 transition-colors sm:h-5 sm:w-5" />
                       )}
 
                       {/* Glow on hover */}
@@ -387,7 +392,9 @@ const Navigation: React.FC = () => {
                 </div>
 
                 {/* Copyright */}
-                <p className="font-mono text-sm text-white/40">© 2025 Het Lathiya</p>
+                <p className="text-center font-mono text-xs text-white/40 sm:text-sm">
+                  © 2025 Het Lathiya
+                </p>
               </motion.div>
 
               {/* Decorative terminal prompt */}
@@ -395,7 +402,7 @@ const Navigation: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.3 }}
                 transition={{ duration: 1, delay: 0.8 }}
-                className="text-python-yellow/20 pointer-events-none absolute top-1/2 left-8 hidden -translate-y-1/2 font-mono text-9xl select-none lg:block"
+                className="text-python-yellow/20 pointer-events-none absolute top-1/2 left-8 hidden -translate-y-1/2 font-mono text-6xl select-none lg:block lg:text-8xl xl:text-9xl"
               >
                 {'>>>'}
               </motion.div>

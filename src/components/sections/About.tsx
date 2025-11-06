@@ -76,17 +76,19 @@ const About: React.FC = () => {
             </div>
 
             {/* Resume Download */}
-            <motion.a
-              href={resume}
-              download
-              style={{ textDecoration: 'none' }}
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 font-bold text-black shadow-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-xl sm:mt-6 sm:px-6 sm:py-3"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Download size={20} />
-              Download Resume
-            </motion.a>
+            <div className="text-center sm:text-left">
+              <motion.a
+                href={resume}
+                download
+                style={{ textDecoration: 'none' }}
+                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 font-bold text-black shadow-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-xl sm:mt-6 sm:px-6 sm:py-3"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Download size={20} />
+                Download Resume
+              </motion.a>
+            </div>
           </motion.div>
 
           {/* Visual Element */}
