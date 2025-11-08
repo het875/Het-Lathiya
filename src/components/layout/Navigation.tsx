@@ -7,6 +7,7 @@ import { NAVIGATION } from '../../data/constants'
 import { Python } from '../common/Python'
 import { LeetCode } from '../common/LeetCode'
 import { HackerRank } from '../common/HackerRank'
+import TextRoll from '../TextRoll'
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -289,19 +290,19 @@ const Navigation: React.FC = () => {
                           transition={{ duration: 0.3, ease: 'easeOut' }}
                         >
                           {/* Number prefix */}
-                          <span className="text-python-yellow/60 mr-2 inline-block flex-shrink-0 font-mono text-md sm:mr-3 sm:text-lg md:mr-4 md:text-xl lg:text-2xl">
+                          <span className="text-python-yellow/60 text-md mr-2 inline-block flex-shrink-0 font-mono sm:mr-3 sm:text-lg md:mr-4 md:text-xl lg:text-2xl">
                             {String(index + 1).padStart(2, '0')}
                           </span>
 
                           {/* Link text */}
                           <span
-                            className={`relative inline-block text-3xl font-bold break-words transition-colors duration-300 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl ${
+                            className={`relative inline-block text-3xl leading-[1.15] font-bold break-words transition-colors duration-300 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl ${
                               activeSection === item.id
                                 ? 'text-python-yellow'
                                 : 'text-white/60 group-hover:text-white'
                             }`}
                           >
-                            {item.name}
+                            <TextRoll className="relative inline-block">{item.name}</TextRoll>
 
                             {/* Underline effect */}
                             <motion.span
