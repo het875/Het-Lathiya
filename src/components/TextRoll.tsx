@@ -1,16 +1,16 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(SplitText, useGSAP);
 
-type RollDirection = 'up' | 'down' | 'left' | 'right';
+type RollDirection = 'up' | 'down' | 'center';
 
 export type TextRollProps = {
-  children: string;
+  children: ReactNode;
   direction?: RollDirection;
   duration?: number;
   stagger?: number;
@@ -40,10 +40,11 @@ export default function TextRoll({
     () => {
       if (!topTextRef.current || !bottomTextRef.current || disabled) return;
 
-      // Create split instances for both texts
+      // Create split instances for both texts - split all text nodes including nested ones
       topSplitRef.current = new SplitText(topTextRef.current, {
         type: 'chars',
         charsClass: 'text-roll-char',
+        // This will split text even inside nested elements
       });
 
       bottomSplitRef.current = new SplitText(bottomTextRef.current, {
@@ -55,15 +56,14 @@ export default function TextRoll({
       const topChars = topSplitRef.current.chars;
       const bottomChars = bottomSplitRef.current.chars;
 
-      if (direction === 'up' || direction === 'down') {
+      if (direction === 'center') {
+        // For center direction, start from center and expand out
+        gsap.set(topChars, { yPercent: 0, opacity: 1 });
+        gsap.set(bottomChars, { yPercent: 100, opacity: 0 });
+      } else if (direction === 'up' || direction === 'down') {
         gsap.set(topChars, { yPercent: 0 });
         gsap.set(bottomChars, {
           yPercent: direction === 'up' ? 100 : -100,
-        });
-      } else {
-        gsap.set(topChars, { xPercent: 0 });
-        gsap.set(bottomChars, {
-          xPercent: direction === 'left' ? 100 : -100,
         });
       }
 
@@ -91,7 +91,36 @@ export default function TextRoll({
     // Create hover timeline
     const tl = gsap.timeline();
 
-    if (direction === 'up' || direction === 'down') {
+    if (direction === 'center') {
+      // Animate from center outwards
+      tl.to(
+        topChars,
+        {
+          yPercent: -100,
+          opacity: 0,
+          duration,
+          stagger: {
+            from: 'center',
+            amount: stagger * topChars.length,
+          },
+          ease,
+        },
+        0
+      ).to(
+        bottomChars,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration,
+          stagger: {
+            from: 'center',
+            amount: stagger * bottomChars.length,
+          },
+          ease,
+        },
+        0
+      );
+    } else {
       const moveAmount = direction === 'up' ? -100 : 100;
 
       // Move both texts simultaneously
@@ -108,29 +137,6 @@ export default function TextRoll({
         bottomChars,
         {
           yPercent: 0,
-          duration,
-          stagger,
-          ease,
-        },
-        0
-      );
-    } else {
-      const moveAmount = direction === 'left' ? -100 : 100;
-
-      // Move both texts simultaneously
-      tl.to(
-        topChars,
-        {
-          xPercent: moveAmount,
-          duration,
-          stagger,
-          ease,
-        },
-        0
-      ).to(
-        bottomChars,
-        {
-          xPercent: 0,
           duration,
           stagger,
           ease,
@@ -157,7 +163,36 @@ export default function TextRoll({
     // Create leave timeline - reverse the animation
     const tl = gsap.timeline();
 
-    if (direction === 'up' || direction === 'down') {
+    if (direction === 'center') {
+      // Reverse from center outwards
+      tl.to(
+        topChars,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: duration * 0.8,
+          stagger: {
+            from: 'center',
+            amount: stagger * 0.5 * topChars.length,
+          },
+          ease,
+        },
+        0
+      ).to(
+        bottomChars,
+        {
+          yPercent: 100,
+          opacity: 0,
+          duration: duration * 0.8,
+          stagger: {
+            from: 'center',
+            amount: stagger * 0.5 * bottomChars.length,
+          },
+          ease,
+        },
+        0
+      );
+    } else {
       const resetAmount = direction === 'up' ? 100 : -100;
 
       // Move both texts back
@@ -180,32 +215,16 @@ export default function TextRoll({
         },
         0
       );
-    } else {
-      const resetAmount = direction === 'left' ? 100 : -100;
-
-      // Move both texts back
-      tl.to(
-        topChars,
-        {
-          xPercent: 0,
-          duration: duration * 0.8,
-          stagger: stagger * 0.5,
-          ease,
-        },
-        0
-      ).to(
-        bottomChars,
-        {
-          xPercent: resetAmount,
-          duration: duration * 0.8,
-          stagger: stagger * 0.5,
-          ease,
-        },
-        0
-      );
     }
 
     timelineRef.current = tl;
+  };
+
+  // Get aria-label as string for accessibility
+  const getAriaLabel = (): string => {
+    if (typeof children === 'string') return children;
+    if (typeof children === 'number') return String(children);
+    return '';
   };
 
   return (
@@ -224,7 +243,7 @@ export default function TextRoll({
         ref={topTextRef}
         className="inline-block"
         style={{ position: 'relative' }}
-        aria-label={children}
+        aria-label={getAriaLabel()}
       >
         {children}
       </div>
